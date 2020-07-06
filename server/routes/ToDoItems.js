@@ -1,0 +1,53 @@
+const express = require('express')
+const router = express.Router()
+
+//to get list of Tasks 
+router.get('/', (req, res) => {
+    db.getTasksList()
+      .then(tasks => {
+        res.send(tasks)
+      })
+      .catch(err => {
+        res.status(500).send(err.message)
+      })
+  })
+
+//add a task
+router.post('/', (req, res) => {
+    db.addTask(req.body)
+      .then(taskid => {
+        res.json(taskid)
+      })
+      .catch(err => {
+        res.status(500).send(err.message)
+      })
+  })
+
+
+//update a task
+router.put('/', (req, res) => {
+    db.updateTask(req.body)
+      .then(updatedId => {
+        res.json(updatedId)
+      })
+      .catch(err => {
+        console.log(err)
+        res.status(500).send(err.message)
+      })
+  })
+
+  
+  //delete a task
+  router.delete('/', (req, res) => {
+    db.deleteTask(req.body)
+      .then(deletedtaskid => {
+        res.json(deletedtaskid)
+      })
+      .catch(err => {
+        res.status(500).send(err.message)
+      })
+  })
+
+
+
+module.exports = router
