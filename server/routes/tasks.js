@@ -30,6 +30,7 @@ router.put('/:id', (req, res) => {
     priority: req.body.priority,
     completed: req.body.completed
 }
+console.log(task, req.params.id)
   db.updateTask(task, req.params.id)
     .then(tasks => {
       res.json(tasks[0])

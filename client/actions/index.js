@@ -5,6 +5,14 @@ export const ADD_TASK = 'ADD_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
 export const CHANGE_VIEW = 'CHANGE_VIEW'
+export const CURRENT_TASK = 'CURRENT_TASK'
+
+export const currentTask = (task) => {
+  return {
+    type: CURRENT_TASK,
+    task: task
+  }
+}
 
 
 export const receiveTasks = (tasks) => {
@@ -111,6 +119,17 @@ export const deleteMyTask = (id) => {
     })
     .catch(err => {
       console.log('It broke')
+    })
+  }
+}
+
+export const updateMyTask = (task) => {
+
+  return (dispatch) => {
+    return request.put(`/tasks/${task.id}`)
+    .send(newTask)
+    .then(() => {
+      dispatch(updateTask(task))
     })
   }
 }

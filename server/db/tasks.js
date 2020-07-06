@@ -20,10 +20,7 @@ function addTask(task, db = connection) {
 }
 
 function updateTask(task, id, db = connection) {
-  return db('tasks').update(task)
-  .then(() => {
-    return db('tasks').where('id', id)
-  })
+  return db('tasks').update(task).where('id', id)
 }
 
 function deleteTask(id, db = connection) {
