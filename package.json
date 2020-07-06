@@ -43,7 +43,8 @@
     "sqlite3": "^5.0.0",
     "supertest": "^4.0.2",
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "knex": "^0.21.1"
   },
   "dependencies": {
     "express": "^4.17.1",
