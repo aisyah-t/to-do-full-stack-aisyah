@@ -1,17 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { fetchTasks } from '../actions/index'
 
 
 class ToDoList extends React.Component {
   componentDidMount() {
+    this.props.dispatch(fetchTasks())
   }
 
   render() {
     return (
       <ul className="todo-list">
-        <li>Eat</li>
-        <li>Code</li>
-        <li>Sleep</li>
+        {
+        this.props.tasks.map(task => {
+          return <li key={task.id}>{task.task}</li>
+        })
+      }
       </ul>
     )
   }
