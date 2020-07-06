@@ -29,12 +29,12 @@ export const updateTask = (task) => {
   }
 }
 
-export const deleteTask = (id) => {
-  return {
-    type: DELETE_TASK,
-    id: id
-  }
-}
+// export const deleteTask = (id) => {
+//   return {
+//     type: DELETE_TASK,
+//     id: id
+//   }
+// }
 
 export const fetchTasks = () => {
   return (dispatch) => {
@@ -63,6 +63,23 @@ export const addNewTask = (task) => {
     .send(newTask)
     .then(res => {
       console.log(res.body)
+      dispatch(fetchTasks())
+      .then(result => console.log(result))
+      return res.body
+    })
+    .catch(err => {
+      console.log('It broke')
+    })
+  }
+}
+
+export const deleteTask = (id) => {
+  return (dispatch) => {
+    return request.delete(`/tasks/${id}`)
+    .then(() => {
+      console.log('deleted')
+    })
+    .then(() => {
       dispatch(fetchTasks())
       .then(result => console.log(result))
       return res.body

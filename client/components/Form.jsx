@@ -28,9 +28,9 @@ class Form extends React.Component {
         <input type="text" name="task" onChange={this.handleChange}/>
         <input type="submit" value="Add"/>
       </form>
-      <form onSubmit={this.handleSubmit}>
+      {/* <form onSubmit={this.handleSubmit}>
       <input type="submit" value="Save to DB"/>
-    </form>
+    </form> */}
     </>
     )
   }

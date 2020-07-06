@@ -1,11 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTasks } from '../actions/index'
+import { fetchTasks, deleteTask } from '../actions/index'
 
 
 class ToDoList extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchTasks())
+  }
+
+  handleClick = (task) => {
+    this.props.dispatch(deleteTask(task))
   }
 
   render() {
@@ -15,7 +19,7 @@ class ToDoList extends React.Component {
         this.props.tasks.map(task => {
           return <div key={task.id}>
           <li >{task.task}
-            <button>Delete</button>
+            <button onClick={()=>this.handleClick(task.id)}>Delete</button>
           </li>
           </div>
         })
