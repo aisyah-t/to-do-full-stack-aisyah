@@ -1,6 +1,7 @@
 import React from 'react'
 import { updateMyTask } from '../actions/index'
 import { connect } from 'react-redux'
+import { deleteMyTask } from '../actions/index'
 
 
 class EditForm extends React.Component {
@@ -19,6 +20,10 @@ class EditForm extends React.Component {
 
   handleChange = (event) => {
     this.setState({task:event.target.value})
+  }
+
+  handleDeleteClick = (task) => {
+    this.props.dispatch(deleteMyTask(task))
   }
 
   render() {
@@ -41,7 +46,7 @@ class EditForm extends React.Component {
         </li>
 
       </ul>
-        
+      <button onClick={()=>this.handleDeleteClick(task.id)}>Delete</button>
         <input type="submit" value="Update"/>
       </form>
     </>
