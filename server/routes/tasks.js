@@ -1,0 +1,47 @@
+const express = require('express')
+const router = express.Router()
+
+const db = require('../db/db')
+
+router.get('/', (req, res) => {
+  db.getTask()
+   .then(task => {
+      res.send(task)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
+router.post('/', (req, res) => {
+  const task = req.body
+
+  db.addTask(task)
+  .then(() => {
+    return db.getTask()
+  })
+  .then(tasks => {
+    res.send(tasks)
+  })
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
+})
+
+router.delete('/:id', (req, res) => {
+  const id = req.params.id
+  db.deleteTask(id)
+  .then(() => {
+    res.sendStatus(200)
+  })
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
+})
+
+router.put('/:id', (req, res) => {
+  const id = req.params.id
+})
+
+
+module.exports = router
