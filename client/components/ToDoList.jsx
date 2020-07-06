@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 
 class ToDoList extends React.Component {
@@ -7,7 +8,7 @@ class ToDoList extends React.Component {
 
   render() {
     return (
-      <ul class="todo-list">
+      <ul className="todo-list">
         <li>Eat</li>
         <li>Code</li>
         <li>Sleep</li>
@@ -16,5 +17,10 @@ class ToDoList extends React.Component {
   }
 }
 
+function mapStateToProps(globalState) {
+  return {
+    tasks: globalState.tasks
+  }
+}
 
-export default ToDoList
+export default connect(mapStateToProps)(ToDoList)
