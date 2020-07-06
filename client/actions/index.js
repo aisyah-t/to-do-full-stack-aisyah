@@ -16,9 +16,7 @@ export const receiveTasks = (tasks) => {
 export const addTask = (task) => {
   return {
     type: ADD_TASK,
-    task: {
-      task: 'Get milk', details: 'Get dark blue', priority: 'low', completed: false
-    }
+    task: task
   }
 }
 
@@ -62,16 +60,40 @@ export const addNewTask = (task) => {
     return request.post('/tasks')
     .send(newTask)
     .then(res => {
-      console.log(res.body)
-      dispatch(fetchTasks())
-      .then(result => console.log(result))
-      return res.body
+      newTask.id = res.body
+      dispatch(addTask(newTask))
     })
     .catch(err => {
       console.log('It broke')
     })
   }
 }
+
+
+// Add new task and fetch all details from db
+
+// export const addNewTask = (task) => {
+//   const newTask = {
+//     task: task,
+//     details: '',
+//     priority: 'low',
+//     completed: false
+//   }
+
+//   return (dispatch) => {
+//     return request.post('/tasks')
+//     .send(newTask)
+//     .then(res => {
+//       console.log(res.body)
+//       dispatch(fetchTasks())
+//       .then(result => console.log(result))
+//       return res.body
+//     })
+//     .catch(err => {
+//       console.log('It broke')
+//     })
+//   }
+// }
 
 export const deleteTask = (id) => {
   return (dispatch) => {
