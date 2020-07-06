@@ -19,7 +19,6 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  // console.log(req.body)
   const task = {
     task: req.body.task,
     details: req.body.details,
@@ -27,8 +26,8 @@ router.put('/:id', (req, res) => {
     completed: req.body.completed
 }
   db.updateTask(task, req.params.id)
-    .then(task => {
-      res.json(task)
+    .then(tasks => {
+      res.json(tasks[0])
     })
 })
 
