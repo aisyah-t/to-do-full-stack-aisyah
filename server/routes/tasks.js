@@ -16,6 +16,9 @@ router.post('/', (req, res) => {
     .then(id => {
       res.json(id)
     })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
 })
 
 router.put('/:id', (req, res) => {
@@ -29,6 +32,9 @@ router.put('/:id', (req, res) => {
     .then(tasks => {
       res.json(tasks[0])
     })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
 })
 
 
@@ -36,6 +42,9 @@ router.delete('/:id', (req, res) => {
   db.deleteTask(req.params.id) 
     .then(() => {
       res.sendStatus(200)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
     })
 })
 
