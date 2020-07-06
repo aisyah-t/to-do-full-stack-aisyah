@@ -4,6 +4,7 @@ export const RECEIVE_TASKS = 'RECEIVE_TASKS'
 export const ADD_TASK = 'ADD_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
+export const CHANGE_VIEW = 'CHANGE_VIEW'
 
 
 export const receiveTasks = (tasks) => {
@@ -27,12 +28,19 @@ export const updateTask = (task) => {
   }
 }
 
-// export const deleteTask = (id) => {
-//   return {
-//     type: DELETE_TASK,
-//     id: id
-//   }
-// }
+export const deleteTask = (id) => {
+  return {
+    type: DELETE_TASK,
+    id: id
+  }
+}
+
+export const changeView = (view) => {
+  return {
+    type: CHANGE_VIEW,
+    view: view
+  }
+}
 
 export const fetchTasks = () => {
   return (dispatch) => {
@@ -95,16 +103,11 @@ export const addNewTask = (task) => {
 //   }
 // }
 
-export const deleteTask = (id) => {
+export const deleteMyTask = (id) => {
   return (dispatch) => {
     return request.delete(`/tasks/${id}`)
     .then(() => {
-      console.log('deleted')
-    })
-    .then(() => {
-      dispatch(fetchTasks())
-      .then(result => console.log(result))
-      return res.body
+      dispatch(deleteTask(id))
     })
     .catch(err => {
       console.log('It broke')
