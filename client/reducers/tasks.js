@@ -1,4 +1,4 @@
-import { SAVE_TASKS, ADD_TASK, UPDATE_TASK, DELETE_TASK } from '../actions/index'
+import { RECEIVE_TASKS, ADD_TASK, UPDATE_TASK, DELETE_TASK } from '../actions/index'
 
 
 // const initialState = []
@@ -9,7 +9,7 @@ const initialState = [
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case SAVE_TASKS:
+    case RECEIVE_TASKS:
       return action.tasks
     case ADD_TASK:
       return [...state, action.task]

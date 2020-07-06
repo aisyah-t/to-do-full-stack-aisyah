@@ -1,14 +1,14 @@
 import request from 'superagent'
 
-export const SAVE_TASKS = 'SAVE_TASKS'
+export const RECEIVE_TASKS = 'RECEIVE_TASKS'
 export const ADD_TASK = 'ADD_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
 
 
-export const saveTasks = (tasks) => {
+export const receiveTasks = (tasks) => {
   return {
-    type: SAVE_TASKS,
+    type: RECEIVE_TASKS,
     tasks: tasks
   }
 }
@@ -16,7 +16,9 @@ export const saveTasks = (tasks) => {
 export const addTask = (task) => {
   return {
     type: ADD_TASK,
-    task: task
+    task: {
+      task: 'Get milk', details: 'Get dark blue', priority: 'low', completed: false
+    }
   }
 }
 
@@ -39,7 +41,7 @@ export const fetchTasks = () => {
     
     return request.get('/tasks')
     .then(res => {
-      dispatch(saveTasks(res.body))
+      dispatch(receiveTasks(res.body))
       return res.body
     })
     .catch(err => {
@@ -48,6 +50,26 @@ export const fetchTasks = () => {
   }
 }
 
-// export const addNewTask = () => {
+export const addNewTask = (task) => {
+  const newTask = {
+    task: task,
+    details: '',
+    priority: 'low',
+    completed: false
+  }
 
-// }
+  return (dispatch) => {
+    return request.post('/tasks')
+    .send(newTask)
+    .then(res => {
+      console.log(res.body)
+      dispatch(fetchTasks())
+      .then(result => console.log(result))
+      return res.body
+    })
+    .catch(err => {
+      console.log('It broke')
+    })
+  }
+}
+

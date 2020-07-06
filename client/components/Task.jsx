@@ -1,11 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTasks } from '../actions/index'
+import { Link } from 'react-router-dom'
 
 
-class ToDoList extends React.Component {
+class Task extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchTasks())
   }
 
   render() {
@@ -13,11 +12,11 @@ class ToDoList extends React.Component {
       <ul className="todo-list">
         {
         this.props.tasks.map(task => {
-          return <div key={task.id}>
-          <li >{task.task}
+          return <>
+          <li key={task.id}>{task.task}
             <button>Delete</button>
           </li>
-          </div>
+          </>
         })
       }
       </ul>
@@ -31,4 +30,4 @@ function mapStateToProps(globalState) {
   }
 }
 
-export default connect(mapStateToProps)(ToDoList)
+export default connect(mapStateToProps)(Task)
