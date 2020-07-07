@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getTodos } from '../apis/api'
+import { fetchTodos } from '../actions/index'
 
 class ToDoList extends React.Component {
   state = {
+    showUpdate: false,
     id:this.props.id,
     task: '',
     details: '',
@@ -11,22 +12,20 @@ class ToDoList extends React.Component {
     completed: ''
   }
 
-  // componentDidMount() {
-  //   getTodos()
-  //     .then((todoData) => {
-  //       this.setState({
-  //         task: todoData
-  //       })
-  //     })
-  // }
+  componentDidMount() {
+    this.props.dispatch(fetchTodos())
+    
+  }
 
   render() {
+    console.log(this.props.tasks)
     return (
       <>
       <div id="app" className="app">
       <h1>Todos</h1>
       <ul className="todo-list">
-        <li>Task: {this.props.task}</li>
+    {this.props.tasks.map(task => {return <li key={task.id}>{task.task}</li>})}
+        
       </ul>
 
       <form>
@@ -39,4 +38,10 @@ class ToDoList extends React.Component {
   }
 }
 
-export default ToDoList
+function mapStateToProps(globalState) {
+  return {
+    tasks: globalState.tasks
+  }
+}
+
+export default connect(mapStateToProps)(ToDoList)

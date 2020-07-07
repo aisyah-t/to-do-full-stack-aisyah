@@ -8,6 +8,6 @@ const taskRoutes = require('./routes/routes')
 server.use(express.json())
 server.use(express.static('public'))
 
-server.use('/tasks', taskRoutes)
+server.use('/api/v1/todos', taskRoutes)
 
 module.exports = server

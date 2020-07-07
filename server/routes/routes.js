@@ -1,13 +1,13 @@
 const express = require('express')
-const db = require('../db/connection')
+const db = require('../db/db')
 const router = express.Router()
-const api = require('./api')
+//const api = require('./api')
 
 
 router.get('/', (req, res) => {
   db.getTodos()
-      .then(task => {
-          res.json(task)
+      .then(tasks => {
+          res.json(tasks)
       })
       .catch(err => {
           console.log('error!', err)
