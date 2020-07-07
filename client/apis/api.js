@@ -15,7 +15,6 @@ export function addToDo(newToDo) {
     .then(response => response.body)
 }
 
-
 export function updateToDo(ToDo) {
   return request
     .put(toDoUrl)
