@@ -8,24 +8,24 @@ export function getTasks() {
     .then(response => response.body)
 }
 
-export function addTask(task) {
-  return request
-    .post(taskUrl)
-    .send(task)
-    .then(response => {
-      return response.body
-    })
-}
+// export function addTask(task) {
+//   return request
+//     .post(taskUrl)
+//     .send(task)
+//     .then(response => {
+//       return response.body
+//     })
+// }
 
-export function updateTask(task) {
-  delete task.showUpdate
-  return request.put(taskUrl)
-    .send(task)
-    .then(response => response.body)
-}
+// export function updateTask(task) {
+//   delete task.showUpdate
+//   return request.put(taskUrl)
+//     .send(task)
+//     .then(response => response.body)
+// }
 
-export function deleteTask(id) {
-  return request
-    .delete(taskUrl + id)
-    .then(response => response.body)
-}
+// export function deleteTask(id) {
+//   return request
+//     .delete(taskUrl + id)
+//     .then(response => response.body)
+// }

@@ -37,7 +37,7 @@ class ToDoList extends React.Component {
     )
   }
 }
-
+//What is returned from the reducer is being brought in as props
 function mapStateToProps(globalState) {
   return {
     tasks: globalState.tasks
