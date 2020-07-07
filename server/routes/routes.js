@@ -20,7 +20,7 @@ router.post('/', (req, res) => {
       })
 })
 
-router.put('/', (req, res) => {
+router.put('/:id', (req, res) => {
     db.updateToDo(req.body)
     .then(toDo => res.json(toDo))
     .catch(err => {
@@ -28,8 +28,8 @@ router.put('/', (req, res) => {
       })
 })
 
-router.delete('/', (req, res) => {
-    db.deleteToDo(req.body.id)
+router.delete('/:id', (req, res) => {
+    db.deleteToDo(req.params.id)
     .then(toDo => res.json(toDo))
     .catch(err => {
         res.status(500).send(err.message)

@@ -1,6 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import { deleteToDo } from '../apis/api'
+import { removeToDo } from '../actions/index'
 
 import Edit from './Edit'
 
@@ -16,9 +17,7 @@ class ToDo extends React.Component {
     }
 
     handleDelete = () => {
-        deleteToDo({
-            id: this.props.id
-        })
+        this.props.dispatch(removeToDo(this.props.id))
     }
 
     render() {
@@ -27,8 +26,8 @@ class ToDo extends React.Component {
                 <li>
                     <h3>{this.props.to_do}</h3>
                     <p>Priority: {this.props.priority}</p>
-                    <p>Completed: {this.props.completed === 0 ? <span>☐</span> : <span>☒</span>}</p>
-                    {this.state.showEdit ? <Edit/> :<button onClick={this.handleEdit}>Edit</button> }
+                    <p>Completed: {this.props.completed !== 1 ? <span>☐</span> : <span>☒</span>}</p>
+                    {this.state.showEdit ? <Edit handleEdit={this.handleEdit} id={this.props.id}/> :<button onClick={this.handleEdit}>Edit</button> }
                     <button onClick={this.handleDelete}>Delete</button>
                 </li>
             </>
@@ -36,6 +35,10 @@ class ToDo extends React.Component {
     }
 }
 
+function mapStateToProps(globalState) {
+    return {
+        toDos: globalState.toDos,
+    }
+}
 
-
-export default ToDo
+export default connect(mapStateToProps)(ToDo)

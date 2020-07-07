@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import ToDo from './ToDo'
 import AddForm from './AddForm'
 
-import { getToDos } from '../apis/api'
+// import { getToDos } from '../apis/api'
 
 import { initToDos } from '../actions/index'
 import { showForm } from '../actions/index'
@@ -12,12 +12,12 @@ import { showForm } from '../actions/index'
 class App extends React.Component { 
 
   componentDidMount() {
-    getToDos().then(data => this.props.dispatch(initToDos(data)))
+    this.props.dispatch(initToDos())
   }
 
-  componentDidUpdate() {
-    getToDos().then(data => this.props.dispatch(initToDos(data)))
-  }
+  // componentDidUpdate() {
+  //   getToDos().then(data => this.props.dispatch(initToDos(data)))
+  // }
 
   handleAdd = () => {
     this.props.dispatch(showForm())

@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addToDo } from '../apis/api'
-
+import { newToDo } from '../actions/index'
 import { hideForm } from '../actions/index'
 
 
@@ -21,7 +20,7 @@ class AddForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        addToDo(this.state)
+        this.props.dispatch(newToDo(this.state))
         this.props.dispatch(hideForm())
     }
 
@@ -41,7 +40,6 @@ class AddForm extends React.Component {
         )
     }
 }
-
 
 function mapStateToProps(globalState) {
     return {

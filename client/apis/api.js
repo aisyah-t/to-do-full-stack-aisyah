@@ -17,14 +17,14 @@ export function addToDo(newToDo) {
 
 export function updateToDo(ToDo) {
   return request
-    .put(toDoUrl)
+    .put(toDoUrl + '/' + ToDo.id)
     .send(ToDo)
     .then(response => response.body)
 }
 
 export function deleteToDo(id) {
   return request
-    .del(toDoUrl)
+    .del(toDoUrl + '/' + id)
     .send(id)
     .then(response => response.body)
 }
