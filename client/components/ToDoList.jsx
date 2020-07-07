@@ -26,7 +26,6 @@ class ToDoList extends React.Component {
                 <div id="ToDoListShape">
                     <div id="toDoItems">
                         <h2>To Do:</h2>
-                        <h2>{this.state.toDoList[0]}</h2>
                         {/* <ul>
                             {this.state.toDoList.map(task => {
                                 return (
@@ -36,11 +35,7 @@ class ToDoList extends React.Component {
                                 )
                             })}
                         </ul> */}
-
                     </div>
-
-
-
                 </div>
             </>
         )
