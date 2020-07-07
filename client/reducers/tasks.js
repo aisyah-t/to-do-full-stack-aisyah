@@ -1,4 +1,4 @@
-import { NEW_TASK, EDIT_TASK, DEL_TASK, RECEIVE_TASKS} from '../actions/index'
+import { NEW_TASK, EDIT_TASK, DEL_TASK, RECEIVE_TASKS } from "../actions/index"
 
 const reducer = (state = [], action) => {
   switch (action.type) {
@@ -9,20 +9,25 @@ const reducer = (state = [], action) => {
       return [
         ...state,
         {
-          id: action.id,
-          name: action.name,
-          details: action.details,
-          urgency: action.urgency,
-          completed: action.completed,
-          listed: action.listed
+          name: action.task.name,
+          details: action.task.details,
+          urgency: action.task.urgency,
+          completed: action.task.completed,
+          listed: action.task.listed,
         },
       ]
 
     case EDIT_TASK:
-      return action.task
+      return state.map((task) => {
+        if (task.id == action.id) {
+          return action.task
+        } else {
+          return task
+        }
+      })
 
     case DEL_TASK:
-      return state.filter(task => task.id != action.id)
+      return state.filter((task) => task.id != action.id)
 
     default:
       return state

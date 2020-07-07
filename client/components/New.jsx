@@ -1,4 +1,8 @@
 import React from "react"
+import { connect } from "react-redux"
+
+import { addTask } from "../actions/index"
+import { newTask } from "../apis/api"
 
 class New extends React.Component {
   state = {
@@ -16,10 +20,11 @@ class New extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-
-    this.props.new(this.state.task)
-    this.setState({
-      task: {},
+    newTask(this.state.task).then(() => {
+      this.props.dispatch(addTask(this.state.task))
+      this.setState({
+        task: {},
+      })
     })
   }
 
@@ -35,7 +40,7 @@ class New extends React.Component {
           <input type="text" name="details" onChange={this.handleChange} />
 
           <label>Urgent</label>
-          <input type="radio" name="urgency" onChange={this.handleChange} />
+          <input type="checkbox" name="urgency" onChange={this.handleChange} />
 
           <input type="submit" value="Add New" />
         </form>
@@ -44,4 +49,4 @@ class New extends React.Component {
   }
 }
 
-export default New
+export default connect()(New)

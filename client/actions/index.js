@@ -12,16 +12,17 @@ export const receiveTasks= (tasks) => {
   }
 }
 
-export const addTask = (id) => {
+export const addTask = (task) => {
   return {
     type: NEW_TASK,
-    id
+    task
   }
 }
 
-export const updateTask = (task) => {
+export const updateTask = (id, task) => {
   return {
     type: EDIT_TASK,
+    id,
     task
   }
 }

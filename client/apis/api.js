@@ -6,21 +6,22 @@ export function getTasks() {
   return request.get(Url).then((response) => response.body)
 }
 
-export function addTasks(task) {
+export function newTask(task) {
   return request
     .post(Url)
     .send(task)
     .then((response) => response.body)
 }
 
-export function updateTasks(task) {
+export function editTask(id, task) {
+  console.log("EDIT")
   return request
-    .put(Url)
+    .put(Url + id)
     .send(task)
     .then((response) => response.body)
 }
 
-export function deleteTasks(task) {
+export function killTask(task) {
   return request
     .del(Url)
     .send(task)

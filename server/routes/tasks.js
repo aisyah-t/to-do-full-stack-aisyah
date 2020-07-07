@@ -27,8 +27,8 @@ router.post("/", (req, res) => {
     })
 })
 
-router.put("/", (req, res) => {
-  const id = req.body.id
+router.put("/:id", (req, res) => {
+  const id = req.params.id
   const task = req.body
   db.updateTask(id, task)
     .then(() => {
