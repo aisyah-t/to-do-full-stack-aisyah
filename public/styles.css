@@ -108,7 +108,3 @@ button {
 .edit-list input {
   flex-grow: unset;
 }
-
-.edit {
-  background-color: gray;
-}

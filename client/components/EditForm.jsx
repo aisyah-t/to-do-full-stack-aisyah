@@ -34,8 +34,7 @@ class EditForm extends React.Component {
 
   render() {
     return (
-      <>
-    
+    <ul className="edit-list">
       <form className="edit" onSubmit={this.handleSubmit}>
         <li> Task:
             <input type="text" name="task" defaultValue={this.props.currentTask.task} onChange={this.handleChange}/>
@@ -53,7 +52,7 @@ class EditForm extends React.Component {
       <button onClick={()=>this.handleDeleteClick(task.id)}>Delete</button>
         <input type="submit" value="Update"/>
       </form>
-    </>
+      </ul>
     )
   }
 }

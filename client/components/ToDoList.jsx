@@ -47,7 +47,7 @@ class ToDoList extends React.Component {
         })
       }
 
-      {this.props.pageView == 'edit' && <EditFormCopy/>}
+      {/* {this.props.pageView == 'edit' && <EditFormCopy/>} */}
 
       </ul>
     )
