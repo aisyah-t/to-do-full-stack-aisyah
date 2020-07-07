@@ -105,6 +105,11 @@ button {
 }
 
 
+.edit-list li {
+  flex-grow: 1;
+}
+
 .edit-list input {
   flex-grow: unset;
 }
+
