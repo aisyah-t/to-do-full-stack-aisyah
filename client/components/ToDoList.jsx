@@ -59,14 +59,9 @@ export class ToDoList extends React.Component {
   render() {
     return (
       <ul className="todo-list">
-        {/* <div className="filter-div">
-          <button className="filter-button">All</button>
-          <button className="filter-button">To do</button>
-          <button className="filter-button">Completed</button>
-        </div> */}
 
         <div className="filter-div">
-            <input type="radio" name="completed" value="0" onChange={this.handleChange} id="doing" />
+            <input type="radio" name="completed" value="0" onChange={this.handleChange} id="doing" checked={this.state.status == 0}/>
             <label className="radio filter-button" htmlFor="doing">In progress</label>
             <input type="radio" name="completed" value="1" onChange={this.handleChange} id="completed" />
             <label className="radio filter-button" htmlFor="completed">Completed</label>
@@ -81,10 +76,8 @@ export class ToDoList extends React.Component {
                   {task.task}
                   <div className="right-aligned">
                     <button onClick={() => this.handleEditClick(task)}>Edit</button>
-                    {/* <button onClick={()=>this.handleClick(task.id)}>Delete</button> */}
                     <button onClick={() => this.handleCompleteClick(task)}>✓</button>
 
-                    {/* <div className="priority" style={this.priorityColour(task.priority)}></div> */}
                   </div>
 
                 </li>
@@ -95,7 +88,6 @@ export class ToDoList extends React.Component {
           })
         }
 
-        {/* {this.props.pageView == 'edit' && <EditFormCopy/>} */}
 
       </ul>
     )
