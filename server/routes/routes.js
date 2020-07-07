@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require ('../db/connection')
+const db = require('../db/connection')
 const router = express.Router()
 
 
@@ -22,6 +22,26 @@ router.post('/', (req, res) => {
         })
         .catch(err => {
             res.status(500).send(err.message)
+        })
+})
+
+router.delete('/:id', (req, res) => {
+    console.log(req.params)
+    const taskId = req.params.id
+
+    db.deleteTask(taskId)
+        .then(() => {
+            res.json({})
+        })
+        .catch(err => {
+            res.status(500).send(err.message)
+        })
+})
+
+router.get('/:id', (req, res) => {
+    db.getTask(req.params.id)
+        .then(task => {
+            res.send(task)
         })
 })
 

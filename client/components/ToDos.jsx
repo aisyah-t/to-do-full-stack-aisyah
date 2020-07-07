@@ -21,7 +21,7 @@ function ToDos (props) {
                 <tbody>
                     {props.tasks.map((todo) => {
                         return (
-                            <Task key={todo.id} task={todo.task} priority={todo.priority} completed={todo.completed}/>
+                            <Task key={todo.id} task={todo.task} priority={todo.priority} completed={todo.completed} id={todo.id}/>
                         )
                     })}
                 </tbody>

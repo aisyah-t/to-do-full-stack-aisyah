@@ -1,20 +1,38 @@
 import request from 'superagent'
 
-export function getTasks () {
+const taskUrl = '/api/'
+
+export function getTasks() {
     return request
-    .get('/api')
-    .then(res => {
-        // console.log(res.body)
-        return res.body
-    })
+        .get(taskUrl)
+        .then(res => {
+            // console.log(res.body)
+            return res.body
+        })
 }
 
-export function addTask () {
+export function addTask(task) {
     return request
-    .post('/api')
-    .send(task)
-    .then(req => {
-        console.log(req.body)
-        // return request.body
-    })
+        .post(taskUrl)
+        .send(task)
+        .then(req => {
+            console.log(req.body)
+            // return request.body
+        })
+}
+
+export function deleteTask(taskId) {
+    return request
+        .del(taskUrl + taskId)
+        .then(response => {
+            return response.body
+        })
+}
+
+export function getTask(taskId) {
+    return request
+        .get(taskUrl + taskId)
+        .then(response => {
+            return response.body
+        })
 }

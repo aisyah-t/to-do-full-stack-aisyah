@@ -18,7 +18,22 @@ function addTask(task, db = connection) {
         })
 }
 
+function deleteTask(taskId, db = connection) {
+    return db('tasks')
+        .where('id', taskId)
+        .del()
+}
+
+function getTask(taskId, db = connection) {
+    return db('tasks')
+        .where('id', taskId)
+        .select()
+        .first()
+}
+
 module.exports = {
     getTasks,
-    addTask
+    addTask,
+    deleteTask,
+    getTask
 } 
