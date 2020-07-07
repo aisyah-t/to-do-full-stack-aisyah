@@ -33,6 +33,19 @@ export class ToDoList extends React.Component {
     this.props.dispatch(updateMyTask(task))
   }
 
+  priorityColour = (priority) => {
+    switch(priority) {
+      case 'high':
+        return {backgroundColor: 'red'}
+      case 'medium':
+        return {backgroundColor: 'orange'}
+      case 'low':
+        return {backgroundColor: 'green'}
+      default:
+        return {backgroundColor: 'white'}
+    }
+  }
+
 
   render() {
     return (
@@ -41,14 +54,17 @@ export class ToDoList extends React.Component {
         this.props.tasks.map(task => {
           if(task.completed == false) {
             return <div key={task.id}>
-            <li >{task.task}
-            <div>
-              <button onClick={()=>this.handleEditClick(task)}>Edit</button>
-              {/* <button onClick={()=>this.handleClick(task.id)}>Delete</button> */}
-              <button onClick={()=>this.handleCompleteClick(task)}>✓</button>
+      
+            <li >
+              {task.task}
+              <div className="right-aligned">
+                <button onClick={()=>this.handleEditClick(task)}>Edit</button>
+                {/* <button onClick={()=>this.handleClick(task.id)}>Delete</button> */}
+                <button onClick={()=>this.handleCompleteClick(task)}>✓</button>
 
-            </div>
-             
+                <div className="priority" style={this.priorityColour(task.priority)}></div>
+                </div>
+              
             </li>
               {this.props.currentTask != undefined && this.props.currentTask.id == task.id && <EditForm/>}
             

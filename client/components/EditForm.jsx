@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteMyTask, changeView, updateMyTask } from '../actions/index'
+import { deleteMyTask, changeView, updateMyTask, currentTask } from '../actions/index'
 
 
 export class EditForm extends React.Component {
@@ -16,6 +16,8 @@ export class EditForm extends React.Component {
   
     this.props.dispatch(updateMyTask(this.state))
     this.props.dispatch(changeView('list'))
+    this.props.dispatch(currentTask('undefined'))
+
 
   }
 
@@ -43,15 +45,29 @@ export class EditForm extends React.Component {
         </li> 
         <li> 
           <label>Priority:</label>
-          <input type="text" name="priority" defaultValue={this.props.currentTask.priority} onChange={this.handleChange}/>
+          <div>
+            <input type="radio" name="priority" value="low" onChange={this.handleChange} id="low" checked={this.state.priority == 'low'}/>
+            <label className="radio" htmlFor="low">Low</label>
+            <input type="radio" name="priority" value="medium" onChange={this.handleChange} id="medium" checked={this.state.priority == 'medium'}/>
+            <label className="radio" htmlFor="medium">Medium</label>
+            <input type="radio" name="priority" value="high" onChange={this.handleChange} id="high" checked={this.state.priority == 'high'}/>
+            <label className="radio" htmlFor="high">High</label>
+          </div>
+   
         </li>
         <li> 
           <label>Details:</label>
           <input type="text" name="details" defaultValue={this.props.currentTask.details} onChange={this.handleChange}/>
         </li>
         <li> 
-          <label>Completed:</label>
-          <input type="text" name="completed" value={this.props.currentTask.completed} onChange={this.handleChange}/>
+          <label>Status:</label><br></br>
+          <div>
+            <input type="radio" name="completed" value="0" onChange={this.handleChange} id="false" checked={this.state.completed == 0}/>
+            <label className="radio" htmlFor="false">In progress</label>
+            <input type="radio" name="completed" value="1" onChange={this.handleChange} id="true" checked={this.state.completed == 1}/>
+            <label className="radio" htmlFor="true">Completed</label>
+          </div>
+         
         </li>
 
       <button onClick={()=>this.handleDeleteClick(this.props.currentTask.id)}>Delete</button>

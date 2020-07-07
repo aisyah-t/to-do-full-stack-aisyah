@@ -13,10 +13,10 @@ export class App extends React.Component {
     return (<>
       <h1>Todo</h1>
         {/* {this.props.pageView == 'edit' && <EditForm/>}  */}
-        {/* {this.props.pageView == 'list' && <ToDoList/>}
-        {this.props.pageView == 'list' && <Form/>} */}
+        {/* {/* {this.props.pageView == 'list' && <ToDoList/>} */}
         <ToDoList/>
-        <Form/>
+        {this.props.pageView == 'list' && <Form/>}
+        {/* <Form/> */}
 
       </>
     )
