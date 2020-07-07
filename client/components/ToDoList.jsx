@@ -19,6 +19,11 @@ export class ToDoList extends React.Component {
   handleEditClick = (task) => {
     this.props.dispatch(changeView('edit'))
     this.props.dispatch(currentTask(task))
+    if(this.props.pageView == 'edit') {
+      this.props.dispatch(changeView('list'))
+      this.props.dispatch(currentTask('undefined'))
+    }
+    
   }
 
 
@@ -45,8 +50,8 @@ export class ToDoList extends React.Component {
             </div>
              
             </li>
-            {this.props.pageView == 'edit' && <EditFormCopy/>}
-
+              {this.props.currentTask != undefined && this.props.currentTask.id == task.id && <EditForm/>}
+            
             </div>
           }
         })
@@ -62,7 +67,8 @@ export class ToDoList extends React.Component {
 function mapStateToProps(globalState) {
   return {
     tasks: globalState.tasks,
-    pageView: globalState.pageView
+    pageView: globalState.pageView,
+    currentTask: globalState.currentTask
   }
 }
 
