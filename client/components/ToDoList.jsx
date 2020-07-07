@@ -13,6 +13,7 @@ class ToDoList extends React.Component {
   }
 
   componentDidMount() {
+    //this is where the initial request for the tasks gets sent from. this one is going to actions
     this.props.dispatch(fetchTodos())
     
   }
