@@ -8,7 +8,9 @@ export function App (props) {
     return (<>
       <h1>Todo</h1>
         <ToDoList/>
-        {props.pageView == 'list' && <Form/>}
+        {props.pageView.completed != undefined && <Form/>}
+        {/* {props.pageView == 'doing' && <Form/>} */}
+        {/* {props.pageView == 'done' && <Form/>} */}
       </>
     )
 }

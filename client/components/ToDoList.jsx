@@ -1,20 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTasks, deleteMyTask, changeView, currentTask, updateMyTask } from '../actions/index'
+import { fetchTasks, changeView, currentTask, updateMyTask } from '../actions/index'
 import EditForm from './EditForm'
-import Form from './Form'
 
 export class ToDoList extends React.Component {
-  state = {
-    status: "0"
-  }
 
   componentDidMount() {
     this.props.dispatch(fetchTasks())
-  }
-
-  handleClick = (task) => {
-    this.props.dispatch(deleteMyTask(task))
   }
 
 
@@ -49,7 +41,10 @@ export class ToDoList extends React.Component {
   }
 
   handleChange = (event) => {
-    this.setState({status: event.target.value})
+    const completed= {
+      completed: event.target.value
+    }
+    this.props.dispatch(changeView({completed: event.target.value}))
   }
 
 
@@ -60,7 +55,7 @@ export class ToDoList extends React.Component {
       <ul className="todo-list">
 
         <div className="filter-div">
-            <input type="radio" name="completed" value="0" onChange={this.handleChange} id="doing" checked={this.state.status == 0}/>
+            <input type="radio" name="completed" value="0" onChange={this.handleChange} id="doing" />
             <label className="radio filter-button" htmlFor="doing">In progress</label>
             <input type="radio" name="completed" value="1" onChange={this.handleChange} id="completed" />
             <label className="radio filter-button" htmlFor="completed">Completed</label>
@@ -68,15 +63,15 @@ export class ToDoList extends React.Component {
        
         {
           this.props.tasks.map(task => {
-            if (task.completed == this.state.status) {
+            if (task.completed == this.props.pageView.completed) {
               return <div key={task.id}>
 
                 <li style={this.priorityColour(task.priority)}>
                   {task.task}
+
                   <div className="right-aligned">
                     <button onClick={() => this.handleEditClick(task)}>Edit</button>
                     <button onClick={() => this.handleCompleteClick(task)}>✓</button>
-
                   </div>
 
                 </li>

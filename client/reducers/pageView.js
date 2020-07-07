@@ -3,7 +3,7 @@ import { CHANGE_VIEW } from '../actions/index'
 
 // const initialState = []
 
-const initialState = 'list'
+const initialState = {completed: 0}
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
