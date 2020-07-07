@@ -10,10 +10,6 @@ import { initToDos } from '../actions/index'
 import { showForm } from '../actions/index'
 
 class App extends React.Component { 
-  // state = {
-  //   showAdd: false
-  // }
- 
 
   componentDidMount() {
     getToDos().then(data => this.props.dispatch(initToDos(data)))
