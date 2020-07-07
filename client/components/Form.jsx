@@ -15,6 +15,7 @@ class Form extends React.Component {
     event.preventDefault()
     console.log(this.state.newTask)
     this.props.dispatch(addNewTask(this.state.newTask))
+    this.setState({newTask:''})
   }
 
   handleChange = (event) => {
@@ -25,7 +26,7 @@ class Form extends React.Component {
     return (
       <>
       <form onSubmit={this.handleSubmit}>
-        <input type="text" name="task" onChange={this.handleChange}/>
+        <input type="text" name="task" value={this.state.newTask} onChange={this.handleChange}/>
         <input type="submit" value="Add"/>
       </form>
       {/* <form onSubmit={this.handleSubmit}>

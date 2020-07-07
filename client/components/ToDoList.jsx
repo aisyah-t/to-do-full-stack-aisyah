@@ -38,8 +38,8 @@ class ToDoList extends React.Component {
             return <div key={task.id}>
             <li >{task.task}
               <button onClick={()=>this.handleEditClick(task)}>Edit</button>
-              <button onClick={()=>this.handleClick(task.id)}>Delete</button>
-              <button onClick={()=>this.handleCompleteClick(task)}>Complete</button>
+              {/* <button onClick={()=>this.handleClick(task.id)}>Delete</button> */}
+              <button onClick={()=>this.handleCompleteClick(task)}>✓</button>
 
             </li>
             </div>

@@ -25,8 +25,8 @@ class EditForm extends React.Component {
     })
   }
 
-  handleDeleteClick = (task) => {
-    this.props.dispatch(deleteMyTask(task))
+  handleDeleteClick = (id) => {
+    this.props.dispatch(deleteMyTask(id))
   }
 
 
@@ -49,7 +49,7 @@ class EditForm extends React.Component {
           <input type="text" name="completed" value={this.props.currentTask.completed} onChange={this.handleChange}/>
         </li>
 
-      <button onClick={()=>this.handleDeleteClick(task.id)}>Delete</button>
+      <button onClick={()=>this.handleDeleteClick(this.props.currentTask.id)}>Delete</button>
         <input type="submit" value="Update"/>
       </form>
       </ul>
