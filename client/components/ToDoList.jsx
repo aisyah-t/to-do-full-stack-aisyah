@@ -36,13 +36,13 @@ export class ToDoList extends React.Component {
   priorityColour = (priority) => {
     switch(priority) {
       case 'high':
-        return {backgroundColor: 'red'}
+        return {borderRightColor: 'red'}
       case 'medium':
-        return {backgroundColor: 'orange'}
+        return {borderRightColor: 'orange'}
       case 'low':
-        return {backgroundColor: 'green'}
+        return {borderRightColor: 'green'}
       default:
-        return {backgroundColor: 'white'}
+        return {borderRightColor: 'white'}
     }
   }
 
@@ -55,14 +55,14 @@ export class ToDoList extends React.Component {
           if(task.completed == false) {
             return <div key={task.id}>
       
-            <li >
+            <li style={this.priorityColour(task.priority)}>
               {task.task}
               <div className="right-aligned">
                 <button onClick={()=>this.handleEditClick(task)}>Edit</button>
                 {/* <button onClick={()=>this.handleClick(task.id)}>Delete</button> */}
                 <button onClick={()=>this.handleCompleteClick(task)}>✓</button>
 
-                <div className="priority" style={this.priorityColour(task.priority)}></div>
+                {/* <div className="priority" style={this.priorityColour(task.priority)}></div> */}
                 </div>
               
             </li>
