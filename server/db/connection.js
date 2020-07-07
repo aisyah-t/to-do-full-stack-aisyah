@@ -12,7 +12,7 @@ function getTasks(db = connection) {
 function addTask(task, db = connection) {
     return db('tasks')
         .insert({
-            task: task.name,
+            task: task.task,
             priority: task.priority,
             completed: task.completed
         })
