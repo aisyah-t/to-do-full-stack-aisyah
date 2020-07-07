@@ -19,6 +19,8 @@ const reducer = (state = initialState, action) => {
           return action.task
         } else return task
       })
+    // case UPDATE_STATUS:
+    //   return 
     case DELETE_TASK:
       return state.filter(task => task.id !== action.id )
     default: 

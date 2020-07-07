@@ -6,25 +6,30 @@ import { deleteMyTask } from '../actions/index'
 
 class EditForm extends React.Component {
   state = {
-    task: ''
   }
 
   componentDidMount() {
+    this.setState(this.props.currentTask)
   }
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state.task)
-    this.props.dispatch(updateMyTask(this.state.task))
+  
+    this.props.dispatch(updateMyTask(this.state))
   }
 
   handleChange = (event) => {
-    this.setState({task:event.target.value})
+    this.setState({
+      [event.target.name]:event.target.value
+    })
   }
 
   handleDeleteClick = (task) => {
     this.props.dispatch(deleteMyTask(task))
   }
+
+
+
 
   render() {
     return (
@@ -33,16 +38,16 @@ class EditForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
       <ul className="edit-list">
         <li> Task:
-            <input type="text" name="task" value={this.props.currentTask.task} onChange={this.handleChange}/>
+            <input type="text" name="task" defaultValue={this.props.currentTask.task} onChange={this.handleChange}/>
           </li> 
         <li> Priority:
-          <input type="text" name="task" value={this.props.currentTask.priority} onChange={this.handleChange}/>
+          <input type="text" name="priority" defaultValue={this.props.currentTask.priority} onChange={this.handleChange}/>
         </li>
         <li> Details:
-          <input type="text" name="task" value={this.props.currentTask.details} onChange={this.handleChange}/>
+          <input type="text" name="details" defaultValue={this.props.currentTask.details} onChange={this.handleChange}/>
         </li>
         <li> Completed:
-          <input type="text" name="task" value={this.props.currentTask.completed} onChange={this.handleChange}/>
+          <input type="text" name="completed" value={this.props.currentTask.completed} onChange={this.handleChange}/>
         </li>
 
       </ul>

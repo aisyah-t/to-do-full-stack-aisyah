@@ -86,6 +86,9 @@ export const addNewTask = (task) => {
 }
 
 
+
+
+
 // Add new task and fetch all details from db
 
 // export const addNewTask = (task) => {
@@ -124,13 +127,12 @@ export const deleteMyTask = (id) => {
 }
 
 export const updateMyTask = (task) => {
-
+  console.log(task)
   return (dispatch) => {
     return request.put(`/tasks/${task.id}`)
-    .send(newTask)
+    .send(task)
     .then(() => {
       dispatch(updateTask(task))
     })
   }
 }
-
