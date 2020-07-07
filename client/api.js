@@ -3,33 +3,33 @@ import request from 'superagent'
 
 // view tasks
 export function getTasks() {
-    return request.get('/')
+    return request.get('/tasks')
         .then(res => { return res.body })
-        .catch(errorHandler('GET', '/'))
 
 }
 
 // create tasks
 export function createTask(task) {
-    return request.post('/')
+    return request.post('/tasks')
         .send(task)
         .then(res => {
             res.body
         })
-        .catch(errorHandler('POST', '/'))
 
 }
 
 // update tasks
 export function updateTask(task) {
-    return request.put('/:id')
+    return request.put('/tasks/' + task.id)
     .send(post)
     .then(res => {return res.body})
-    .catch(errorHandler('PUT', '/v1/posts/:id'))
+    .catch(console.log(err))
 }
 
 // delete tasks
 export function deleteTask() {
-    return request.delete('/:id')
-    .catch(errorHandler('DELETE', '/id'))
+    return request.delete('/tasks/' + task.id)
+    .catch(err => {
+        return err.message
+    })
 }
