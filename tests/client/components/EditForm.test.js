@@ -32,7 +32,7 @@ test('EditForm renders only correctly', () => {
   
   // Act
   const actual = wrapper.find('input[defaultValue="Sleep"]')
-  console.log(wrapper.debug())
+  // console.log(wrapper.debug())
   // Assert
   expect(actual).toHaveLength(1)
 })
