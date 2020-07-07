@@ -152,3 +152,18 @@ input:checked + label {
   justify-content: flex-end;
   align-items: center;
 }
+
+.filter-div {
+  /* margin-left: -2rem; */
+  margin: 0 0 -0.25rem -2rem;
+}
+
+.filter-button {
+  border-bottom: none;
+  /* background-color: rgba(255,255,255,0.1); */
+  height: 2rem;
+}
+
+.filter-div input:checked + label {
+  background-color: rgba(255,255,255,0.1);
+}

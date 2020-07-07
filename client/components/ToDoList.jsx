@@ -1,11 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTasks, deleteMyTask, changeView, currentTask, updateMyTask} from '../actions/index'
+import { fetchTasks, deleteMyTask, changeView, currentTask, updateMyTask } from '../actions/index'
 import EditForm from './EditForm'
 import EditFormCopy from './EditFormCopy'
 import Form from './Form'
 
 export class ToDoList extends React.Component {
+  state = {
+    status: "0"
+  }
 
   componentDidMount() {
     this.props.dispatch(fetchTasks())
@@ -19,11 +22,11 @@ export class ToDoList extends React.Component {
   handleEditClick = (task) => {
     this.props.dispatch(changeView('edit'))
     this.props.dispatch(currentTask(task))
-    if(this.props.pageView == 'edit') {
+    if (this.props.pageView == 'edit') {
       this.props.dispatch(changeView('list'))
       this.props.dispatch(currentTask('undefined'))
     }
-    
+
   }
 
 
@@ -34,46 +37,65 @@ export class ToDoList extends React.Component {
   }
 
   priorityColour = (priority) => {
-    switch(priority) {
+    switch (priority) {
       case 'high':
-        return {borderRightColor: 'red'}
+        return { borderRightColor: 'red' }
       case 'medium':
-        return {borderRightColor: 'orange'}
+        return { borderRightColor: 'orange' }
       case 'low':
-        return {borderRightColor: 'green'}
+        return { borderRightColor: 'green' }
       default:
-        return {borderRightColor: 'white'}
+        return { borderRightColor: 'white' }
     }
   }
+
+  handleChange = (event) => {
+    this.setState({status: event.target.value})
+  }
+
+
 
 
   render() {
     return (
       <ul className="todo-list">
+        {/* <div className="filter-div">
+          <button className="filter-button">All</button>
+          <button className="filter-button">To do</button>
+          <button className="filter-button">Completed</button>
+        </div> */}
+
+        <div className="filter-div">
+            <input type="radio" name="completed" value="0" onChange={this.handleChange} id="doing" />
+            <label className="radio filter-button" htmlFor="doing">In progress</label>
+            <input type="radio" name="completed" value="1" onChange={this.handleChange} id="completed" />
+            <label className="radio filter-button" htmlFor="completed">Completed</label>
+          </div>
+       
         {
-        this.props.tasks.map(task => {
-          if(task.completed == false) {
-            return <div key={task.id}>
-      
-            <li style={this.priorityColour(task.priority)}>
-              {task.task}
-              <div className="right-aligned">
-                <button onClick={()=>this.handleEditClick(task)}>Edit</button>
-                {/* <button onClick={()=>this.handleClick(task.id)}>Delete</button> */}
-                <button onClick={()=>this.handleCompleteClick(task)}>✓</button>
+          this.props.tasks.map(task => {
+            if (task.completed == this.state.status) {
+              return <div key={task.id}>
 
-                {/* <div className="priority" style={this.priorityColour(task.priority)}></div> */}
-                </div>
-              
-            </li>
-              {this.props.currentTask != undefined && this.props.currentTask.id == task.id && <EditForm/>}
-            
-            </div>
-          }
-        })
-      }
+                <li style={this.priorityColour(task.priority)}>
+                  {task.task}
+                  <div className="right-aligned">
+                    <button onClick={() => this.handleEditClick(task)}>Edit</button>
+                    {/* <button onClick={()=>this.handleClick(task.id)}>Delete</button> */}
+                    <button onClick={() => this.handleCompleteClick(task)}>✓</button>
 
-      {/* {this.props.pageView == 'edit' && <EditFormCopy/>} */}
+                    {/* <div className="priority" style={this.priorityColour(task.priority)}></div> */}
+                  </div>
+
+                </li>
+                {this.props.currentTask != undefined && this.props.currentTask.id == task.id && <EditForm />}
+
+              </div>
+            }
+          })
+        }
+
+        {/* {this.props.pageView == 'edit' && <EditFormCopy/>} */}
 
       </ul>
     )
