@@ -6,7 +6,7 @@ const db = require ('../db/db')
 router.get('/', (req, res) => {
     db.getTasksList()
       .then(tasks => {
-        res.send(tasks)
+        res.json(tasks)
       })
       .catch(err => {
         res.status(500).send(err.message)
