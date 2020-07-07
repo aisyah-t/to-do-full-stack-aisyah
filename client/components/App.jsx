@@ -1,12 +1,19 @@
 import React from 'react'
 
+import ToDoList from './ToDoList'
+import AddTask from './AddTask'
+
 class App extends React.Component {
   componentDidMount() {
   }
 
   render() {
     return (
-      <h1>Todo</h1>
+      <div className="centerDivWithFlexbox">
+      <ToDoList/>
+      <AddTask/>
+      </div>
+      
     )
   }
 }
