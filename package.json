@@ -2,7 +2,10 @@
   "name": "todo-full-stack",
   "version": "0.1.0",
   "description": "Todo Full Stack",
-  "repository": "https://github.com/piwakawaka-2020/todo-full-stack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piwakawaka-2020/todo-full-stack.git"
+  },
   "main": "server/index.js",
   "scripts": {
     "dev": "run-p watch:client watch:server",
@@ -57,5 +60,13 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "superagent": "^5.3.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/piwakawaka-2020/todo-full-stack/issues"
+  },
+  "homepage": "https://github.com/piwakawaka-2020/todo-full-stack#readme",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": []
 }
