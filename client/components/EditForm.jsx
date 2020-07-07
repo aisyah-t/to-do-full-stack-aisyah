@@ -31,7 +31,7 @@ class EditForm extends React.Component {
       <>
       
       <form onSubmit={this.handleSubmit}>
-      <ul className="todo-list">
+      <ul className="edit-list">
         <li> Task:
             <input type="text" name="task" value={this.props.currentTask.task} onChange={this.handleChange}/>
           </li> 
