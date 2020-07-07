@@ -24,7 +24,7 @@ h1 {
   max-width: 550px;
   background-color: rgb(1, 100, 100);
   color: #f7f1f1;
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* .todo-list {
@@ -42,28 +42,36 @@ h1 {
 }
 
 form {
-  margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
+  margin: 2.5rem
 }
 
 form input {
   flex-grow: 1;
   border: none;
   background: #f7f1f1;
-  padding: 0 1.5em;
+  padding: 0 1em;
   font-size: initial;
+  margin: 1em 1em 0 1em
+}
+
+form label {
+  display: block;
+  text-align: center;
+  padding: 1em
 }
 
 form input[type="submit"] {
   padding:0 1.3rem;
   color: #f7f1f1;
-  background: #ff6666;
+  background: teal;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,.3);
   margin-left: 5px;
   cursor: pointer;
   transition: background .2s ease-out;
+  font-weight: bolder;
 }
 
 form input[type="submit"]:hover {

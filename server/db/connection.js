@@ -31,9 +31,16 @@ function getTask(taskId, db = connection) {
         .first()
 }
 
+function updateTask(taskId, task, db = connection) {
+    return db('tasks')
+        .where('id', taskId)
+        .update(task)
+}
+
 module.exports = {
     getTasks,
     addTask,
     deleteTask,
-    getTask
+    getTask,
+    updateTask
 } 
