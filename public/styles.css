@@ -154,12 +154,15 @@ input:checked + label {
 }
 
 .filter-div {
-  margin: 0 0 -0.25rem -2rem;
+  /* margin: 0 0 -0.25rem -2rem; */
+  display:flex;
+  align-items: flex-end;
 }
 
 .filter-button {
   border-bottom: none;
   height: 2rem;
+  line-height: 0.5rem;
 }
 
 .filter-div input:checked + label {
