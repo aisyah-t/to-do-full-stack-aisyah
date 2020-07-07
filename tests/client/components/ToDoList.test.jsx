@@ -55,4 +55,36 @@ test('ToDoList renders only completed tasks', () => {
   expect(actual).toHaveLength(1)
 })
 
+test('ToDoList renders completed task when state.status == 0', () => {
+  // Arrange
+  const tasks = [{
+    id: 1,
+    task: 'Get milk',
+    details: '',
+    priority: 'low',
+    completed: 0
+  },
+  {
+    id: 2,
+    task: 'Get coffee',
+    details: '',
+    priority: 'low',
+    completed: 1
+    },
+  {
+    id: 3,
+    task: 'More coffee',
+    details: '',
+    priority: 'low',
+    completed: 1
+    }
+  ]
+  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks}/>)
+  wrapper.setState({status: 1})
 
+  // Act
+  const actual = wrapper.find('li')
+
+  // Assert 
+  expect(actual).toHaveLength(2)
+})
