@@ -1,7 +1,12 @@
 import { combineReducers } from 'redux'
 
-// import stuff from './stuff'
+import getToDoList from './getToDoList'
 
 export default combineReducers({
-  // stuff
+  getToDoList
 })
+
+
+//reducers
+//action
+// thunk api call
