@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { fetchTasks, deleteMyTask, changeView, currentTask, updateMyTask} from '../actions/index'
-
+import EditForm from './EditForm'
+import EditFormCopy from './EditFormCopy'
+import Form from './Form'
 
 class ToDoList extends React.Component {
 
@@ -38,11 +40,15 @@ class ToDoList extends React.Component {
               <button onClick={()=>this.handleEditClick(task)}>Edit</button>
               <button onClick={()=>this.handleClick(task.id)}>Delete</button>
               <button onClick={()=>this.handleCompleteClick(task)}>Complete</button>
+
             </li>
             </div>
           }
         })
       }
+
+      {this.props.pageView == 'edit' && <EditFormCopy/>}
+
       </ul>
     )
   }
@@ -50,7 +56,8 @@ class ToDoList extends React.Component {
 
 function mapStateToProps(globalState) {
   return {
-    tasks: globalState.tasks
+    tasks: globalState.tasks,
+    pageView: globalState.pageView
   }
 }
 

@@ -1,9 +1,10 @@
 import React from 'react'
+import { updateMyTask } from '../actions/index'
 import { connect } from 'react-redux'
-import { deleteMyTask, changeView, updateMyTask } from '../actions/index'
+import { deleteMyTask } from '../actions/index'
 
 
-class EditForm extends React.Component {
+class EditFormCopy extends React.Component {
   state = {
   }
 
@@ -15,8 +16,6 @@ class EditForm extends React.Component {
     event.preventDefault()
   
     this.props.dispatch(updateMyTask(this.state))
-    this.props.dispatch(changeView('list'))
-
   }
 
   handleChange = (event) => {
@@ -29,27 +28,31 @@ class EditForm extends React.Component {
     this.props.dispatch(deleteMyTask(task))
   }
 
-
+  componentWillReceiveProps() {
+    this.setState(this.props.currentTask)
+  }
 
 
   render() {
     return (
       <>
-    
-      <form className="edit" onSubmit={this.handleSubmit}>
+      
+      <form onSubmit={this.handleSubmit}>
+      <ul className="edit-list">
         <li> Task:
-            <input type="text" name="task" defaultValue={this.props.currentTask.task} onChange={this.handleChange}/>
+            <input type="text" name="task" defaultValue={this.state.task} onChange={this.handleChange}/>
           </li> 
         <li> Priority:
-          <input type="text" name="priority" defaultValue={this.props.currentTask.priority} onChange={this.handleChange}/>
+          <input type="text" name="priority" defaultValue={this.state.priority} onChange={this.handleChange}/>
         </li>
         <li> Details:
-          <input type="text" name="details" defaultValue={this.props.currentTask.details} onChange={this.handleChange}/>
+          <input type="text" name="details" defaultValue={this.state.details} onChange={this.handleChange}/>
         </li>
         <li> Completed:
-          <input type="text" name="completed" value={this.props.currentTask.completed} onChange={this.handleChange}/>
+          <input type="text" name="completed" value={this.state.completed} onChange={this.handleChange}/>
         </li>
 
+      </ul>
       <button onClick={()=>this.handleDeleteClick(task.id)}>Delete</button>
         <input type="submit" value="Update"/>
       </form>
@@ -65,4 +68,4 @@ function mapStateToProps(globalState) {
   }
 }
 
-export default connect(mapStateToProps)(EditForm)
+export default connect(mapStateToProps)(EditFormCopy)

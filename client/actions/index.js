@@ -127,7 +127,6 @@ export const deleteMyTask = (id) => {
 }
 
 export const updateMyTask = (task) => {
-  console.log(task)
   return (dispatch) => {
     return request.put(`/tasks/${task.id}`)
     .send(task)
