@@ -9,7 +9,7 @@ module.exports = {
 
 
 function listTasks(db = connection) {
-  return db('tasks').select()
+  return db('tasks').select().orderBy('priority', 'asc')
 }
 
 function addTask(task, db = connection) {
