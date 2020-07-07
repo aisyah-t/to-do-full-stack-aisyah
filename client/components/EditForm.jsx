@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { deleteMyTask, changeView, updateMyTask } from '../actions/index'
 
 
-class EditForm extends React.Component {
+export class EditForm extends React.Component {
   state = {
   }
 
@@ -36,16 +36,21 @@ class EditForm extends React.Component {
     return (
     <ul className="edit-list">
       <form className="edit" onSubmit={this.handleSubmit}>
-        <li> Task:
-            <input type="text" name="task" defaultValue={this.props.currentTask.task} onChange={this.handleChange}/>
-          </li> 
-        <li> Priority:
+        
+        <li> 
+          <label>Task:</label>
+          <input type="text" name="task" defaultValue={this.props.currentTask.task} onChange={this.handleChange}/>
+        </li> 
+        <li> 
+          <label>Priority:</label>
           <input type="text" name="priority" defaultValue={this.props.currentTask.priority} onChange={this.handleChange}/>
         </li>
-        <li> Details:
+        <li> 
+          <label>Details:</label>
           <input type="text" name="details" defaultValue={this.props.currentTask.details} onChange={this.handleChange}/>
         </li>
-        <li> Completed:
+        <li> 
+          <label>Completed:</label>
           <input type="text" name="completed" value={this.props.currentTask.completed} onChange={this.handleChange}/>
         </li>
 

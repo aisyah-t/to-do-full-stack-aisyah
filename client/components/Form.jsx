@@ -3,7 +3,7 @@ import { addNewTask } from '../actions/index'
 import { connect } from 'react-redux'
 
 
-class Form extends React.Component {
+export class Form extends React.Component {
   state = {
     newTask: ''
   }
@@ -13,7 +13,6 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    console.log(this.state.newTask)
     this.props.dispatch(addNewTask(this.state.newTask))
     this.setState({newTask:''})
   }

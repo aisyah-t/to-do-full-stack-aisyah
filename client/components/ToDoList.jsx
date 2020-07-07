@@ -5,7 +5,7 @@ import EditForm from './EditForm'
 import EditFormCopy from './EditFormCopy'
 import Form from './Form'
 
-class ToDoList extends React.Component {
+export class ToDoList extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(fetchTasks())

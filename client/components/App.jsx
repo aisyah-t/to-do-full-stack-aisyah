@@ -5,7 +5,7 @@ import Task from './Task'
 import { connect } from 'react-redux'
 import EditForm from './EditForm'
 
-class App extends React.Component {
+export class App extends React.Component {
   componentDidMount() {
   }
 
