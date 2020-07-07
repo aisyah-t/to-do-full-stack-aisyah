@@ -1,26 +1,16 @@
 import React from 'react'
 import ToDoList from './ToDoList'
 import Form from './Form'
-import Task from './Task'
 import { connect } from 'react-redux'
-import EditForm from './EditForm'
 
-export class App extends React.Component {
-  componentDidMount() {
-  }
+export function App (props) {
 
-  render() {
     return (<>
       <h1>Todo</h1>
-        {/* {this.props.pageView == 'edit' && <EditForm/>}  */}
-        {/* {/* {this.props.pageView == 'list' && <ToDoList/>} */}
         <ToDoList/>
-        {this.props.pageView == 'list' && <Form/>}
-        {/* <Form/> */}
-
+        {props.pageView == 'list' && <Form/>}
       </>
     )
-  }
 }
 
 function mapStateToProps(globalState) {

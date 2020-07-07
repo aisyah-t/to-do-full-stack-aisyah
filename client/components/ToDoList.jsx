@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchTasks, deleteMyTask, changeView, currentTask, updateMyTask } from '../actions/index'
 import EditForm from './EditForm'
-import EditFormCopy from './EditFormCopy'
 import Form from './Form'
 
 export class ToDoList extends React.Component {
