@@ -45,6 +45,8 @@ export class ToDoList extends React.Component {
             </div>
              
             </li>
+            {this.props.pageView == 'edit' && <EditFormCopy/>}
+
             </div>
           }
         })
