@@ -11,30 +11,6 @@ export class ToDoList extends React.Component {
   }
 
 
-  handleEditClick = (task) => {
-    this.props.dispatch(changeView('edit'))
-    this.props.dispatch(currentTask(task))
-    if (this.props.pageView == 'edit') {
-      this.props.dispatch(changeView('list'))
-      this.props.dispatch(currentTask('undefined'))
-    }
-
-  }
-
-
-  handleCompleteClick = (task) => {
-    task.completed = true
-    console.log(task)
-    this.props.dispatch(updateMyTask(task))
-  }
-
-
-  handleChange = (event) => {
-    const completed= {
-      completed: event.target.value
-    }
-    this.props.dispatch(changeView({completed: event.target.value}))
-  }
 
 
 

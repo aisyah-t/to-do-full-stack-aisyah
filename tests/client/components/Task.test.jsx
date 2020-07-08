@@ -1,5 +1,4 @@
 import React from 'react'
-import {ToDoList} from '../../../client/components/ToDoList'
 import { shallow } from 'enzyme'
 import {Task} from '../../../client/components/Task'
 
