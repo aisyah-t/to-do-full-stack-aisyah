@@ -28,6 +28,7 @@ export class Task extends React.Component {
     // console.log(event)
   
       // this.setState({editFormVisible: true})
+
       this.props.dispatch(changeView('edit'))
       this.props.dispatch(currentTask(task))
       if (this.props.pageView == 'edit') {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchTasks, changeView, currentTask, updateMyTask } from '../actions/index'
+import { filterBy, fetchTasks, changeView, currentTask, updateMyTask } from '../actions/index'
 import EditForm from './EditForm'
 import Task from './Task'
 
@@ -14,7 +14,8 @@ export class ToDoList extends React.Component {
     const completed = {
       completed: event.target.value
     }
-    this.props.dispatch(changeView({ completed: event.target.value }))
+    // this.props.dispatch(changeView({ completed: event.target.value }))
+    this.props.dispatch(filterBy({ completed: event.target.value }))
   }
 
 
@@ -32,12 +33,16 @@ export class ToDoList extends React.Component {
           </div>
        
         {
+         
           this.props.tasks.map(task => {
+            if(this.props.filter.completed == task.completed){
               return (
-              <div key={task.id}>
-                <Task task={task}/>
-              </div>
+                <div key={task.id}>
+                  <Task task={task}/>
+                </div>
               )
+            }
+              
           })
         }
 
@@ -51,7 +56,8 @@ function mapStateToProps(globalState) {
   return {
     tasks: globalState.tasks,
     pageView: globalState.pageView,
-    currentTask: globalState.currentTask
+    currentTask: globalState.currentTask,
+    filter: globalState.filter
   }
 }
 

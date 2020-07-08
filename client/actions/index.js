@@ -6,6 +6,7 @@ export const UPDATE_TASK = 'UPDATE_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
 export const CHANGE_VIEW = 'CHANGE_VIEW'
 export const CURRENT_TASK = 'CURRENT_TASK'
+export const FILTER_BY = 'FILTER_BY'
 
 export const currentTask = (task) => {
   return {
@@ -135,3 +136,11 @@ export const updateMyTask = (task) => {
     })
   }
 }
+
+export const filterBy = (filter) => {
+  return {
+    type: FILTER_BY,
+    filter: filter
+  }
+}
+
