@@ -1,4 +1,5 @@
 import React from 'react'
+import AddTodo from '../containers/AddTodo'
 
 class App extends React.Component {
   componentDidMount() {
@@ -8,6 +9,7 @@ class App extends React.Component {
     return (
       <div>
       <h1>Todo</h1>
+      <AddTodo />
       </div>
     )
   }
