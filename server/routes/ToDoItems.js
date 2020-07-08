@@ -40,7 +40,7 @@ router.put('/', (req, res) => {
 
   //delete a task
   router.delete('/', (req, res) => {
-    console.log('backend - delete route' , req.body.id)
+    console.log('backend - delete route ---> id =   ' , req.body.id)
     db.deleteTask(req.body.id)
       .then(deletedtaskid => {
       })

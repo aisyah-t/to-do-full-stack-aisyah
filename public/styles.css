@@ -14,6 +14,7 @@ height:70vh;
 border: black 6px solid;
 background-color: #eaedff;
 padding: 38px;
+box-shadow: 17px 20px 20px 7px #d4d0d0;
 }
 
 #toDoItems {
@@ -46,6 +47,7 @@ button {
   font-family: 'PT Mono', monospace;
   font-size: 12px;
   background-color: cornsilk;
+  float: right;
 }
 
 /* FONTS */
@@ -53,6 +55,10 @@ h3 {
 font-size: 16px;
 }
 
+h2 {
+  font-size: 24px;
+  font-weight: 800;
+}
 
 
 /* h1 {
