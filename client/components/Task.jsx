@@ -50,11 +50,11 @@ export class Task extends React.Component {
   render() {
     return (
       <>
-        <li style={this.priorityColour(this.props.task.priority)}>
+        <li className="task" onClick={() => this.handleEditClick(this.props.task)} style={this.priorityColour(this.props.task.priority)}>
           <a>{this.props.task.task}</a>
 
           <div className="right-aligned">
-            <button onClick={() => this.handleEditClick(this.props.task)}>Edit</button>
+            {/* <button onClick={() => this.handleEditClick(this.props.task)}>Edit</button> */}
             <button onClick={() => this.handleCompleteClick(this.props.task.task)}>✓</button>
           </div>
         </li>
