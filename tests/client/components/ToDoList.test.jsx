@@ -2,9 +2,9 @@ import React from 'react'
 import {ToDoList} from '../../../client/components/ToDoList'
 import { shallow } from 'enzyme'
 
-test('Only inprogress tasks are rendered when pageView.completed == 0', () => {
+test('Only inprogress tasks are rendered when filter.completed == 0', () => {
   //Arrange
-  const pageView = { completed: 0 }
+  const filter= { completed: 0 }
 
   const tasks = [{
     id: 1,
@@ -28,7 +28,7 @@ test('Only inprogress tasks are rendered when pageView.completed == 0', () => {
     completed: 1
     },
   ]
-  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} pageView={pageView}/>)
+  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} filter={filter}/>)
   
   // Act
   const actual = wrapper.find('Connect(Task)')
@@ -38,9 +38,9 @@ test('Only inprogress tasks are rendered when pageView.completed == 0', () => {
 })
 
 
-test('Only completed tasks are rendered when pageView.completed == 1', () => {
+test('Only completed tasks are rendered when filter.completed == 1', () => {
   //Arrange
-  const pageView = { completed: 1 }
+  const filter = { completed: 1 }
 
 
   const tasks = [{
@@ -65,7 +65,7 @@ test('Only completed tasks are rendered when pageView.completed == 1', () => {
     completed: 1
     },
   ]
-  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} pageView={pageView}/>)
+  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} filter={filter}/>)
   
   // Act
   const actual = wrapper.find('Connect(Task)')
