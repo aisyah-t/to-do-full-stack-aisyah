@@ -28,9 +28,10 @@ export const initToDos = () => {
 export const newToDo = (newToDo) => {
   return dispatch => {
     addToDo(newToDo)
-      .then(() => {
+      .then((newId) => {
         dispatch({
           type: ADD_TO_DO,
+          id: newId,
           to_do: newToDo.to_do,
           priority: newToDo.priority,
           completed: newToDo.completed,

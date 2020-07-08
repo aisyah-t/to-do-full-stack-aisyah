@@ -21,13 +21,14 @@ class ToDo extends React.Component {
     }
 
     render() {
+        console.log(this.props.completed)
         return (
             <>
                 <li>
                     <h3>{this.props.to_do}</h3>
                     <p>Priority: {this.props.priority}</p>
-                    <p>Completed: {this.props.completed !== 1 ? <span>☐</span> : <span>☒</span>}</p>
-                    {this.state.showEdit ? <Edit handleEdit={this.handleEdit} id={this.props.id}/> :<button onClick={this.handleEdit}>Edit</button> }
+                    <p>Completed: {this.props.completed == 1 || false ? <span>☒</span> : <span>☐</span>}</p>
+                    {this.state.showEdit ? <Edit handleEdit={this.handleEdit} id={this.props.id} /> : <button onClick={this.handleEdit}>Edit</button>}
                     <button onClick={this.handleDelete}>Delete</button>
                 </li>
             </>
