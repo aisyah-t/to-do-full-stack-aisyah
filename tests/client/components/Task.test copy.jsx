@@ -1,11 +1,12 @@
 import React from 'react'
 import {ToDoList} from '../../../client/components/ToDoList'
 import { shallow } from 'enzyme'
+import {Task} from '../../../client/components/Task'
 
-test('ToDoList renders  correctly', () => {
+test('Task renders  correctly', () => {
   //Arrange
   const pageView = { completed: 0 }
-  const tasks = [{
+  const task = [{
     id: 1,
     task: 'Get milk',
     details: '',
@@ -20,7 +21,7 @@ test('ToDoList renders  correctly', () => {
     completed: 0
     },
   ]
-  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} pageView={pageView}/>)
+  const wrapper = shallow(<Task dispatch={() => {}} task={task} pageView={pageView}/>)
   
   // Act
   const actual = wrapper.find('li')
@@ -30,7 +31,7 @@ test('ToDoList renders  correctly', () => {
 })
 
 
-test('ToDoList renders only completed tasks pageView.completed == 0', () => {
+test('Task renders only completed tasks pageView.completed == 0', () => {
   //Arrange
   const pageView = { completed: 0 }
 
@@ -49,7 +50,7 @@ test('ToDoList renders only completed tasks pageView.completed == 0', () => {
     completed: 1
     },
   ]
-  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} pageView={pageView}/>)
+  const wrapper = shallow(<Task dispatch={() => {}} tasks={tasks} pageView={pageView}/>)
   
   // Act
   const actual = wrapper.find('li')
@@ -58,7 +59,7 @@ test('ToDoList renders only completed tasks pageView.completed == 0', () => {
   expect(actual).toHaveLength(1)
 })
 
-test('ToDoList renders completed task when pageView.completed == 1', () => {
+test('Task renders completed task when pageView.completed == 1', () => {
   // Arrange
   const pageView = { completed: 1 }
 
@@ -84,7 +85,7 @@ test('ToDoList renders completed task when pageView.completed == 1', () => {
     completed: 1
     }
   ]
-  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} pageView={pageView}/>)
+  const wrapper = shallow(<Task dispatch={() => {}} tasks={tasks} pageView={pageView}/>)
 
   // Act
   const actual = wrapper.find('li')
@@ -128,7 +129,7 @@ test('Edit form is rendered only for current task', () => {
     priority: 'low',
     completed: 1
   }
-  const wrapper = shallow(<ToDoList dispatch={() => {}} tasks={tasks} pageView={pageView} currentTask={currentTask}/>)
+  const wrapper = shallow(<Task dispatch={() => {}} tasks={tasks} pageView={pageView} currentTask={currentTask}/>)
 
   // Act
   const actual = wrapper.find('Connect(EditForm)')

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 
-class Task extends React.Component {
+export class Task extends React.Component {
   componentDidMount() {
   }
 
@@ -24,7 +24,7 @@ class Task extends React.Component {
     return (
 
       <li style={this.priorityColour(this.props.task.priority)}>
-        {this.props.task.task}
+        <a>{this.props.task.task}</a>
 
         <div className="right-aligned">
           <button onClick={() => this.handleEditClick(task)}>Edit</button>
