@@ -7,7 +7,6 @@ import Tasks from "./Tasks"
 import New from "./New"
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.dispatch(fetchTasks())
   }

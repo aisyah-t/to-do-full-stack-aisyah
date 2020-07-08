@@ -11,15 +11,6 @@ class Edit extends React.Component {
     task: {},
   }
 
-  handleChange = (e) => {
-    this.setState({
-      task: {
-        ...this.state.task,
-        [e.target.name]: e.target.value,
-      },
-    })
-  }
-
   handleButton = () => {
     if (this.state.button == false) {
       this.setState({
@@ -33,15 +24,29 @@ class Edit extends React.Component {
     }
   }
 
+  handleChange = (e) => {
+    let value = e.target.value
+    if (e.target.name == "urgency") {
+      value = e.target.checked ? "Urgent" : null
+    }
+
+    this.setState({
+      task: {
+        ...this.state.task,
+        [e.target.name]: value,
+      },
+    })
+  }
+
   handleEdit = (e) => {
     e.preventDefault()
-    
+
     const id = this.props.task.id
-    
     editTask(id, this.state.task).then(() => {
       this.props.dispatch(updateTask(id, this.state.task))
       this.setState({
         task: {},
+        button: false
       })
     })
   }
@@ -54,30 +59,35 @@ class Edit extends React.Component {
 
         {this.state.button && (
           <form onSubmit={this.handleEdit}>
+            <div className="form-row">
+              <label>Name</label>
+              <input
+                type="text"
+                name="name"
+                defaultValue={task.name}
+                onChange={this.handleChange}
+              />
+            </div>
 
-            <label>Name</label>
-            <input
-              type="text"
-              name="name"
-              defaultValue={task.name}
-              onChange={this.handleChange}
-            />
+            <div className="form-row">
+              <label>Details</label>
+              <input
+                type="text"
+                name="details"
+                defaultValue={task.details}
+                onChange={this.handleChange}
+              />
+            </div>
 
-            <label>Details</label>
-            <input
-              type="text"
-              name="details"
-              defaultValue={task.details}
-              onChange={this.handleChange}
-            />
-
-            <label>Urgent</label>
-            <input
-              type="checkbox"
-              name="urgency"
-              defaultValue={task.urgency}
-              onChange={this.handleChange}
-            />
+            <div className="form-row">
+              <label>Urgent</label>
+              <input
+                type="checkbox"
+                name="urgency"
+                defaultChecked={task.urgency == "Urgent"}
+                onChange={this.handleChange}
+              />
+            </div>
 
             <input type="submit" value="Update" />
           </form>

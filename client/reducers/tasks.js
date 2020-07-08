@@ -9,6 +9,7 @@ const reducer = (state = [], action) => {
       return [
         ...state,
         {
+          id: action.task.id,
           name: action.task.name,
           details: action.task.details,
           urgency: action.task.urgency,
@@ -20,7 +21,15 @@ const reducer = (state = [], action) => {
     case EDIT_TASK:
       return state.map((task) => {
         if (task.id == action.id) {
-          return action.task
+          const newTask = { ...task }
+
+          // Object.keys(action.task).forEach((key) => {
+          //   newTask[key] = action.task[key]
+          // })
+
+          Object.assign(newTask, action.task)
+
+          return newTask
         } else {
           return task
         }

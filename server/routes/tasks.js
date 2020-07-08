@@ -16,11 +16,8 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   const task = req.body
   db.addTask(task)
-    .then(() => {
-      db.getTasks()
-      .then((tasks) => {
-        res.json(tasks)
-      })
+    .then((id) => {
+      res.json({ id: id })
     })
     .catch((err) => {
       console.log(err)
@@ -32,8 +29,7 @@ router.put("/:id", (req, res) => {
   const task = req.body
   db.updateTask(id, task)
     .then(() => {
-      db.getTasks()
-      .then((tasks) => {
+      db.getTasks().then((tasks) => {
         res.json(tasks)
       })
     })
@@ -46,8 +42,7 @@ router.delete("/", (req, res) => {
   const id = req.body.id
   db.deleteTask(id)
     .then(() => {
-      db.getTasks()
-      .then((tasks) => {
+      db.getTasks().then((tasks) => {
         res.json(tasks)
       })
     })

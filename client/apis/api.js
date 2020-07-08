@@ -14,7 +14,6 @@ export function newTask(task) {
 }
 
 export function editTask(id, task) {
-  console.log("EDIT")
   return request
     .put(Url + id)
     .send(task)

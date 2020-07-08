@@ -11,7 +11,14 @@ class Tasks extends React.Component {
           {this.props.tasks.map((task) => {
             return (
               <li key={task.id} id={task.id}>
-                {task.name} {<Edit task={task} />} {<Delete task={task} />}
+                <div className="container">
+                  <div className="options">
+                    {task.name} <span>{task.urgency}</span>
+                  </div>
+
+                  <Delete task={task} />
+                  <Edit task={task} />
+                </div>
               </li>
             )
           })}
