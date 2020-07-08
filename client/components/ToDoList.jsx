@@ -10,7 +10,12 @@ export class ToDoList extends React.Component {
     this.props.dispatch(fetchTasks())
   }
 
-
+  handleChange = (event) => {
+    const completed = {
+      completed: event.target.value
+    }
+    this.props.dispatch(changeView({ completed: event.target.value }))
+  }
 
 
 
@@ -28,13 +33,11 @@ export class ToDoList extends React.Component {
        
         {
           this.props.tasks.map(task => {
-            if (task.completed == this.props.pageView.completed) {
               return (
               <div key={task.id}>
                 <Task task={task}/>
               </div>
               )
-            }
           })
         }
 
