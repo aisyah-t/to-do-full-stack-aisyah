@@ -1,6 +1,5 @@
 const express = require('express')
 const router = express.Router()
-
 const db = require('../db/db')
 
 router.get('/', (req, res) => {
@@ -30,7 +29,7 @@ router.post('/', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  db.deleteTask(id)
+  db.deleteTasks(id)
   .then(() => {
     res.sendStatus(200)
   })
@@ -41,6 +40,21 @@ router.delete('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const id = req.params.id
+  const task = req.body.description
+  console.log(task);
+  
+  
+  db.editTask(id, task)
+  .then(() =>{
+    db.getTask()
+   })
+  .then(tasks =>{
+    res.send(tasks)
+  })
+  .catch(err => {
+    res.status(500).send(err.message)
+  })
+
 })
 
 

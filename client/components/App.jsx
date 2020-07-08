@@ -1,42 +1,31 @@
 import React from 'react'
 import Todo from './Todo'
-import {getTask} from '../apis/api'
+// import {receivedTask} from '../actions/index'
+// import {connect} from 'react-redux'
 
 class App extends React.Component {
 
-  state={
-    
-    tasks:[],
-    
-  }
+// componentDidMount(){
 
-  showList =() =>{
+// this.props.dispatch(receivedTask())
 
-    getTask()
-    .then(task =>{
-      
-      this.setState({
-
-        tasks:task
-      })
-
-    })
-  }
-
-
-
-
+// }
 
 
   render() {
+
+    
     return (
+
        <>
-  
+     
       <Todo/>
      </> 
     )
   }
 }
+
+
 
 
 export default App

@@ -10,21 +10,23 @@ export function getTask () {
   
   export function addTask (tasks) {
     return request
-      .post(widgetUrl)
-      .send(widget)
+      .post(TodoListUrl)
+      .send(tasks)
       .then(response => response.body)
   }
   
-  export function deleteTask (id) {
+  export function removeTask (id) {
     return request
-    .delete(`${TodoListUrl}/${id}`)
+    .delete(`${TodoListUrl}${id}`)
     .then(response => response)
   }
   
   
-  export function editTask (id) {
+  export function editTask (id, description,) {
+    
     return request
-    .put(`${TodoListUrl}/${id}`)
-    .then(response => response)
+    .put(`${TodoListUrl}${id}`)
+    .send({description})
+    .then(response => response.body)
   }
   

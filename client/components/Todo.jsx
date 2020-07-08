@@ -1,51 +1,39 @@
-import React from 'react'
-import {getTask} from '../apis/api'
-import Form from './Form'
-import ListOfTasks from './ListsOfTasks'
-
+import React from "react";
+import { getTask } from "../apis/api";
+import Form from "./Form";
+import ListOfTasks from "./ListsOfTasks";
+import {receivedTask} from '../actions/index'
+import {connect} from 'react-redux'
 
 class Todo extends React.Component {
-
- state={
-     tasks:[],
-     
- }
-
- componentDidMount(){
-
-this.showList()
-
- }
-
-showList=()=>{
-
-    console.log(this.state.tasks);
+ 
+    componentDidMount() {
+        getTask() 
+        .then((task) => {
+           
     
- getTask() 
- .then(task => 
-    {this.setState({ tasks:task})
+   return this.props.dispatch(receivedTask(task))})
+  }
 
-})
-}
+ 
 
-// handleClick=()=>{
-
-
-// }
+  render() {
     
-
- render(){
- return(
-
-    <>
-      <h1>Todo</h1>
-      {this.state.tasks.map(task => <ListOfTasks tasks ={task}/>)}
-       <Form/>
-    </>
-)
+    return (
+      <>
+        <h1>Todo</h1>
+        {this.props.tasks.map((task) => (
+          <ListOfTasks tasks={task} />
+        ))}
+        <Form />
+      </>
+    );
+  }
+}
+ function mapstateprops(globalState){
+    return {
+        tasks: globalState.tasks
+    }
  }
 
-}
-
-
-export default Todo 
+export default  connect(mapstateprops)(Todo);

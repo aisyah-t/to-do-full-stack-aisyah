@@ -1,45 +1,34 @@
-const knex = require('knex')
-const config = require('../../knexfile')
-const env = process.env.NODE_ENV || 'development'
-const connection = knex(config[env])
+const knex = require("knex");
+const config = require("../../knexfile");
+const env = process.env.NODE_ENV || "development";
+const connection = knex(config[env]);
 
+module.exports = {
+  getTask,
+  addTask,
+  deleteTasks,
+  editTask,
+};
 
-module.exports ={
-
-    getTask,
-    addTask,
-    deleteTask,
-    // updateTask,
-
-
+function getTask(db = connection) {
+  return db("TodoList").select();
 }
 
-function getTask(db=connection){
+function addTask(task, db = connection) {
+  console.log(task);
 
-    return db('TodoList').select()
-
+  return db("TodoList").insert({
+    Tasks: task.task,
+    Description:task.description,
+    Priority: task.priority,
+    Completed: task.completed
+  });
 }
 
-function addTask(task, db=connection){
-
-    return db('TodoList')
-    .insert({
-     
-        task: task.Tasks,
-        Description:task.Description,
-        Priority: task.Priority,
-        Completed: task.Completed
-    })
+function deleteTasks(id, db = connection) {
+  return db("TodoList").where("id", id).delete();
 }
 
-function deleteTask(id, db=connection){
-    return db('TodoList').where('id', id).delete()
+function editTask(id, task, db = connection) {
+  return db("TodoList").where("id", id).update({ Description: task })
 }
-
-// function updateTask(id, db=connection){
-
-//     returndb('TodoList')
-// }
-
-
-
