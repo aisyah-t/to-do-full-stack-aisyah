@@ -1,7 +1,6 @@
 const express = require('express')
-const db = require('../db/db')
+const db = require('./db/db')
 const router = express.Router()
-//const api = require('./api')
 
 
 router.get('/', (req, res) => {
@@ -13,6 +12,16 @@ router.get('/', (req, res) => {
           console.log('error!', err)
           res.status(500).send(err.message)
       })
+})
+
+router.patch('/:id', (req, res) => {
+    db.updateTask(req.params.id, task)
+        .then(() => {
+            return db.getTodos(req.params.id)
+            .then(() => {
+                res.json({})
+            })
+        })
 })
 
 

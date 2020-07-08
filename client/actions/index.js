@@ -1,6 +1,7 @@
-import { getTasks } from "../apis/api";
+import { getTasks, updateTask } from "../apis/api";
 
 export const GET_TODOS = 'GET_TODOS'
+export const UPDATE_TODO = 'UPDATE_TODO'
 
 //Action Creator
 export const getTodos = (tasksArray) => {
@@ -8,6 +9,13 @@ export const getTodos = (tasksArray) => {
   return {
     type: GET_TODOS,
     tasks: tasksArray
+  }
+}
+
+export const updateTodo = (task) => {
+  return {
+    type: UPDATE_TODO,
+    task: task
   }
 }
 
@@ -19,5 +27,14 @@ export function fetchTodos() {
       dispatch(getTodos(tasks))
       console.log(tasks)
     })
+  }
+}
+
+export function updateItem(task, id) {
+  return (dispatch) => {
+    updateTask(task, id)
+      .then(task => {
+        dispatch(updateTodo(task))
+      })
   }
 }

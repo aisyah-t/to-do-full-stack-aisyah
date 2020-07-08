@@ -1,5 +1,6 @@
 import React from 'react'
 import ToDoList from './ToDoList'
+import CompletedList from './CompletedList'
 
 class App extends React.Component {
   componentDidMount() {
@@ -9,6 +10,7 @@ class App extends React.Component {
     return (
       <>
       <ToDoList />
+      <CompletedList />
       </>
     )
   }

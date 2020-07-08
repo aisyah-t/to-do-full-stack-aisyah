@@ -17,12 +17,11 @@ export function getTasks() {
 //     })
 // }
 
-// export function updateTask(task) {
-//   delete task.showUpdate
-//   return request.put(taskUrl)
-//     .send(task)
-//     .then(response => response.body)
-// }
+export function updateTask(task, id) {
+  return request.put(`/${id}`)
+    .send(task)
+    .then(response => response.body)
+}
 
 // export function deleteTask(id) {
 //   return request

@@ -3,7 +3,7 @@ const db = require('./db/connection')
 
 const server = express()
 
-const taskRoutes = require('./routes/routes')
+const taskRoutes = require('./routes')
 
 server.use(express.json())
 server.use(express.static('public'))
