@@ -2,11 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Mono&display=swap');
 
 
-
-*, html {
-  box-sizing: border-box;
-}
-
 body {
   margin: 0;
   font-family: 'PT Mono', monospace;
@@ -14,16 +9,19 @@ body {
 }
 
 #ToDoListShape {
-width: 340px;
-height:500px;
+width: 360px;
+height:70vh;
 border: black 6px solid;
+background-color: #eaedff;
+padding: 38px;
 }
 
 #toDoItems {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 23%;
+  margin-top: 8%;
+  margin-left: 9px;
+  margin-right: 7px;
 }
 
 .centerDivWithFlexbox {
@@ -34,6 +32,26 @@ border: black 6px solid;
   flex-direction: column;
 }
 
+#indivTasks {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spaceOutForm {
+  margin-top: 37px;
+}
+
+button {
+  font-family: 'PT Mono', monospace;
+  font-size: 12px;
+  background-color: cornsilk;
+}
+
+/* FONTS */
+h3 {
+font-size: 16px;
+}
 
 
 

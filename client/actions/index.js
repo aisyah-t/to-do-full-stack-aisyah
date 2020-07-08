@@ -1,27 +1,41 @@
+import request from 'superagent'
+import {getTasks} from '../api'
+import {apiAddTask} from '../api'
 
-export const GET_TASKS = 'GET_TASKS'
+export const GET_TODOS = 'GET_TODOS'
+export const ADD_TODO = 'ADD_TODO'
 
-export const getToDoList = () => {
+export const getToDos = (tasksArray) => {
     return {
-      type: GET_TASKS
+      type: GET_TODOS,
+      tasks: tasksArray
     }
   }
 
-  export function fetchWombats(showLoading = true) {
+  export function saveToDo (task) {
     return dispatch => {
-      // I'm about to get the wombats
-      if (showLoading) dispatch(setLoading(true))
-      getWombats()
-        .then(wombats => {
-          // I've got the wombats
-          dispatch(setWombats(wombats))
-          if (showLoading) dispatch(setLoading(false))
+    apiAddTask(task)
+        .then(() => {
+          
+          dispatch(fetchToDoList)
+          console.log('all done')
         })
         .catch(err => {
-          if (showLoading) dispatch(setLoading(false))
+          console.log('not done')
         })
     }
   }
 
 
-  // unsure what order to put these above 
+  export function fetchToDoList () {
+    return (dispatch) => {
+      getTasks()
+        .then(tasksArray => {
+          console.log('data in thunk action' , tasksArray)
+          dispatch(getToDos(tasksArray))
+        })
+        .catch(err => {
+          dispatch(showError(err.message))
+        })
+    }
+  }

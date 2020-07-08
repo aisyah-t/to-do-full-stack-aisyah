@@ -1,40 +1,37 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { fetchToDoList } from '../actions/index'
+
+
+
 import Task from './Task'
-import {getToDoList} from '../api'
+
 
 class ToDoList extends React.Component {
 
     state = {
         toDoList: []
     }
-    
-    componentDidMount() {
 
-        getToDoList()
-        .then(data => {
-            console.log('data in To Do List Comp' , data)
-          this.setState({
-              toDoList: data
-          })
-        })
+    componentDidMount() {
+        this.props.dispatch(fetchToDoList())
       }
   
     render() {
-        console.log('top of return statment', this.state.toDoList)
         return (
             <>
                 <div id="ToDoListShape">
                     <div id="toDoItems">
                         <h2>To Do:</h2>
-                        {/* <ul>
-                            {this.state.toDoList.map(task => {
+                        <ul>
+                            {this.props.tasks.map(task => {
                                 return (
                                     <>
-                                        <Widget data={widget} widgetToUpdate={this.widgetToUpdate} />
+                                       <li><Task data={task}/></li> 
                                     </>
                                 )
                             })}
-                        </ul> */}
+                        </ul>
                     </div>
                 </div>
             </>
@@ -42,4 +39,11 @@ class ToDoList extends React.Component {
     }
 }
 
-  export default ToDoList
+function mapStateToProps(globalState) {
+    return {
+      tasks: globalState.tasks
+    }
+  }
+
+  
+  export default connect(mapStateToProps)(ToDoList)

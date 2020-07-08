@@ -40,9 +40,9 @@ router.put('/', (req, res) => {
 
   //delete a task
   router.delete('/', (req, res) => {
-    db.deleteTask(req.body)
+    console.log('backend - delete route' , req.body.id)
+    db.deleteTask(req.body.id)
       .then(deletedtaskid => {
-        res.json(deletedtaskid)
       })
       .catch(err => {
         res.status(500).send(err.message)

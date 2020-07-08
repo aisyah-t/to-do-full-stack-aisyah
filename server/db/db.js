@@ -32,9 +32,9 @@ function updateTask(taskObj, db = connection) {
 }
 
 
-function deleteTask (taskObj, db = connection) {
+function deleteTask (id, db = connection) {
     return db ('ToDoDB')
-    .where ('id' , taskObj.id)
+    .where ('id' , id)
     .del()
 }
 
