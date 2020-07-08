@@ -5,7 +5,6 @@ import request from 'superagent'
 export function getTasks() {
     return request.get('/tasks')
         .then(res => { return res.body })
-
 }
 
 // create tasks
@@ -15,7 +14,6 @@ export function createTask(task) {
         .then(res => {
             res.body
         })
-
 }
 
 // update tasks

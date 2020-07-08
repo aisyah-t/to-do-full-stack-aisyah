@@ -35,10 +35,13 @@ class Update extends React.Component {
         })
     }
 
-    // function handleSubmit() {
-    //     //dispatch
-
-    // }
+    handleSubmit = () => {
+        //dispatch
+        let task = {
+            id: this.props.match.params.id
+        }
+        console.log(task)
+    }
 
     render() {
         // const Tasks = props.tasks
@@ -66,7 +69,7 @@ class Update extends React.Component {
                             <option value="No" name="No">No</option>
                         </select>
                     </div>
-                    {/* <button onClick={handleSubmit}>submit</button> */}
+                    <button onClick={this.handleSubmit}>submit</button>
                 </form>
             </div>
         )
