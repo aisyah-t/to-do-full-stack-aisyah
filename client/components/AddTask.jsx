@@ -1,5 +1,7 @@
 import React from "react";
-import { addTaskApi } from "../apis/api";
+// import { addTaskApi } from "../apis/api";
+import { saveTodo } from "../actions";
+import { connect } from 'react-redux'
 
 class AddTask extends React.Component {
   state = {
@@ -17,10 +19,11 @@ class AddTask extends React.Component {
 
     handleSubmit = event => {
         event.preventDefault()
-        addTaskApi(this.state)
-        .then(() => {
-            this.props.refreshTodos
-        })
+        this.props.dispatch(saveTodo(this.state)) // doesnt need a then block
+        // addTaskApi(this.state) wont got through redux this way
+        // .then(() => {
+            // console.log('works')
+        // }) 
     }
 
   render() {
@@ -32,15 +35,15 @@ class AddTask extends React.Component {
         </div>
         <div className="form-row">
           <label>Task Details:</label>
-          <input type="text" name="task" onChange={this.handleChange}/>
+          <input type="text" name="task_details" onChange={this.handleChange}/>
         </div>
         <div className="form-row">
             <label>Prority:</label>
-            <input type="text" name="task" defaultValue="true" onChange={this.handleChange}/>
+            <input type="text" name="priority" defaultValue="true" onChange={this.handleChange}/>
         </div>
         <div className="form-row">
             <label>Completed: </label>
-            <input type="text" name="task" defaultValue="false" onChange={this.handleChange}/>
+            <input type="text" name="completed" defaultValue="false" onChange={this.handleChange}/>
          </div>
         <input type="submit" value="Add" />
       </form>
@@ -48,4 +51,4 @@ class AddTask extends React.Component {
   }
 }
 
-export default AddTask;
+export default connect ()(AddTask);

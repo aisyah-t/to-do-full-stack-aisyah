@@ -83,3 +83,16 @@ form input[type="submit"] {
 .form-row label {
   display: block;
 }
+
+.update {
+  padding:0 1.3rem;
+  color: #f7f1f1;
+  background: #ff6666;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,.3);
+  margin-left: 5px;
+  cursor: pointer;
+  transition: background .2s ease-out;
+  height: 3rem;
+  width: 100%;
+}

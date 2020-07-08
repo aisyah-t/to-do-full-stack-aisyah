@@ -10,7 +10,26 @@ export function getTodosApi() {
 
 export function addTaskApi(task) {
     return request 
-        .get(todosURL)
+        .post(todosURL)
         .send(task)
-        .then(response => request.body)
+        .then(res => request.body)
+}
+
+export function delTaskApi(id) {
+    return request
+        .delete(todosURL + id)
+        .then(res => {
+            return res.body
+        })
+}
+
+export function updateTaskApi(task) {
+    console.log(task);
+    
+    return request
+        .patch(todosURL + task.taskId)
+        .send(task)
+        .then(res => {
+            return res.body
+        })
 }

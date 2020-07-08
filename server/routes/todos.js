@@ -34,9 +34,11 @@ router.delete("/:id", (req, res) => {
         })
 })
 
-router.put("/:id", (req, res) => {
+router.patch("/:id", (req, res) => {
+    console.log(req.body, req.params.id);
+    
     db.updateTodo(req.body, req.params.id)
-        .then((updateTodo) => {
+        .then(() => {
             res.sendStatus(200)
         })
         .catch((err) => {
