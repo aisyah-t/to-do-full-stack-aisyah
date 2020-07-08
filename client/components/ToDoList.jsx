@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { fetchTasks, changeView, currentTask, updateMyTask } from '../actions/index'
 import EditForm from './EditForm'
+import Task from './Task'
 
 export class ToDoList extends React.Component {
 
@@ -27,18 +28,6 @@ export class ToDoList extends React.Component {
     this.props.dispatch(updateMyTask(task))
   }
 
-  priorityColour = (priority) => {
-    switch (priority) {
-      case 'high':
-        return { borderRightColor: 'red' }
-      case 'medium':
-        return { borderRightColor: 'orange' }
-      case 'low':
-        return { borderRightColor: 'green' }
-      default:
-        return { borderRightColor: 'white' }
-    }
-  }
 
   handleChange = (event) => {
     const completed= {
@@ -64,20 +53,11 @@ export class ToDoList extends React.Component {
         {
           this.props.tasks.map(task => {
             if (task.completed == this.props.pageView.completed) {
-              return <div key={task.id}>
-
-                <li style={this.priorityColour(task.priority)}>
-                  {task.task}
-
-                  <div className="right-aligned">
-                    <button onClick={() => this.handleEditClick(task)}>Edit</button>
-                    <button onClick={() => this.handleCompleteClick(task)}>✓</button>
-                  </div>
-
-                </li>
-                {this.props.currentTask != undefined && this.props.currentTask.id == task.id && <EditForm />}
-
+              return (
+              <div key={task.id}>
+                <Task task={task}/>
               </div>
+              )
             }
           })
         }
