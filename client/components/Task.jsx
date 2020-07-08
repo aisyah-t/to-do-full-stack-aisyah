@@ -25,20 +25,22 @@ export class Task extends React.Component {
   }
 
   handleEditClick = (task) => {
-    // this.setState({editFormVisible: true})
-    this.props.dispatch(changeView('edit'))
-    this.props.dispatch(currentTask(task))
-    if (this.props.pageView == 'edit') {
-      this.props.dispatch(changeView({ completed: 0 }))
-      this.props.dispatch(currentTask('undefined'))
+    // console.log(event)
+  
+      // this.setState({editFormVisible: true})
+      this.props.dispatch(changeView('edit'))
+      this.props.dispatch(currentTask(task))
+      if (this.props.pageView == 'edit') {
+        this.props.dispatch(changeView({ completed: 0 }))
+        this.props.dispatch(currentTask('undefined'))
     }
+
 
   }
 
 
   handleCompleteClick = (task) => {
     task.completed = true
-    console.log(task)
     this.props.dispatch(updateMyTask(task))
   }
 
@@ -50,15 +52,16 @@ export class Task extends React.Component {
   render() {
     return (
       <>
-        <li className="task" onClick={() => this.handleEditClick(this.props.task)} style={this.priorityColour(this.props.task.priority)}>
+        <li className="task" style={this.priorityColour(this.props.task.priority)}>
           <a>{this.props.task.task}</a>
 
           <div className="right-aligned">
-            {/* <button onClick={() => this.handleEditClick(this.props.task)}>Edit</button> */}
-            <button onClick={() => this.handleCompleteClick(this.props.task.task)}>✓</button>
+            {/* <input type="checkbox" onChange={(event) => this.handleCompleteClick(this.props.task, event)}/> */}
+            <button onClick={() => this.handleEditClick(this.props.task)}>Edit</button>
+            <button onClick={() => this.handleCompleteClick(this.props.task)}>✓</button>
           </div>
         </li>
-        {this.props.pageView == 'edit' && this.props.currentTask == this.props.task && <EditForm/>}
+        {this.props.pageView == 'edit' && this.props.currentTask == this.props.task && <EditForm />}
       </>
 
     )
