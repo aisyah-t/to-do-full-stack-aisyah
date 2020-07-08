@@ -36,6 +36,7 @@ export class ToDoList extends React.Component {
          
           this.props.tasks.map(task => {
             if(this.props.filter.completed == task.completed){
+
               return (
                 <div key={task.id}>
                   <Task task={task}/>

@@ -1,5 +1,8 @@
 import request from 'superagent'
 
+const apiUrl = 'http://localhost:3000/tasks'
+
+
 export function listTasks() {
   request.get('/')
     .then(res => {
@@ -8,14 +11,20 @@ export function listTasks() {
     .catch(logError)
 }
 
-export function addTask(task) {
-  request.post('/')
+export function addTaskAPI(task) {
+  return request
+    .post(apiUrl)
     .send(task)
     .then(res => {
+      console.log('lh',res.body)
       return res.body
     })
-    .catch(logError)
+    .catch(err => {
+      console.log('It broke')
+    })
 }
+
+
 
 export function updateTask(task, id) {
   request.put(`/${id}`)
@@ -26,10 +35,12 @@ export function updateTask(task, id) {
     .catch(logError)
 }
 
-export function deleteTask(id) {
-  request.delete(`/${id}`)
+export function deleteTaskAPI(id) {
+  return request.delete(`/tasks/${id}`)
     .then(res => {
       return res.body
     })
-    .catch(logError)
+    .catch(err => {
+      console.log('It broke')
+    })
 }

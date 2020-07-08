@@ -8,6 +8,8 @@ export const CHANGE_VIEW = 'CHANGE_VIEW'
 export const CURRENT_TASK = 'CURRENT_TASK'
 export const FILTER_BY = 'FILTER_BY'
 
+import { addTaskAPI, deleteTaskAPI, } from '../apis/tasks'
+
 export const currentTask = (task) => {
   return {
     type: CURRENT_TASK,
@@ -65,59 +67,34 @@ export const fetchTasks = () => {
   }
 }
 
-export const addNewTask = (task) => {
+export function addNewTask (task) {
   const newTask = {
     task: task,
     details: '',
     priority: 'low',
     completed: false
   }
-
+  // console.log(newTask)
+ 
   return (dispatch) => {
-    return request.post('/tasks')
-    .send(newTask)
-    .then(res => {
-      newTask.id = res.body
-      dispatch(addTask(newTask))
-    })
-    .catch(err => {
-      console.log('It broke')
-    })
+   addTaskAPI(newTask)
+      .then(res => {
+        console.log(res)
+        newTask.id = res.body
+        dispatch(addTask(newTask))
+      })
+      .catch(err => {
+        console.log('It broke')
+      })
   }
 }
 
 
 
 
-
-// Add new task and fetch all details from db
-
-// export const addNewTask = (task) => {
-//   const newTask = {
-//     task: task,
-//     details: '',
-//     priority: 'low',
-//     completed: false
-//   }
-
-//   return (dispatch) => {
-//     return request.post('/tasks')
-//     .send(newTask)
-//     .then(res => {
-//       console.log(res.body)
-//       dispatch(fetchTasks())
-//       .then(result => console.log(result))
-//       return res.body
-//     })
-//     .catch(err => {
-//       console.log('It broke')
-//     })
-//   }
-// }
-
 export const deleteMyTask = (id) => {
   return (dispatch) => {
-    return request.delete(`/tasks/${id}`)
+    return deleteTaskAPI(id)
     .then(() => {
       dispatch(deleteTask(id))
     })
