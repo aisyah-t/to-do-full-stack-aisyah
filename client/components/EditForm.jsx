@@ -13,7 +13,6 @@ export class EditForm extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-  
     this.props.dispatch(updateMyTask(this.state))
     this.props.dispatch(changeView('list'))
     this.props.dispatch(currentTask('undefined'))
@@ -27,7 +26,8 @@ export class EditForm extends React.Component {
     })
   }
 
-  handleDeleteClick = (id) => {
+  handleDeleteClick = (id, event) => {
+    event.preventDefault()
     this.props.dispatch(deleteMyTask(id))
   }
 
@@ -71,8 +71,8 @@ export class EditForm extends React.Component {
          
         </li>
         <li>
-          <button onClick={()=>this.handleDeleteClick(this.props.currentTask.id)}>Delete</button>
-          <input type="submit" value="Update"/>
+          <button onClick={(event)=>this.handleDeleteClick(this.props.currentTask.id, event)}>Delete</button>
+          <input type="submit" value="Update" onSubmit={this.handleSubmit}/>
         </li>
 
       

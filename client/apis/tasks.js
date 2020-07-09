@@ -12,11 +12,9 @@ export function listTasks() {
 }
 
 export function addTaskAPI(task) {
-  return request
-    .post(apiUrl)
+  return request.post(apiUrl)
     .send(task)
     .then(res => {
-      console.log('lh',res.body)
       return res.body
     })
     .catch(err => {
@@ -26,17 +24,19 @@ export function addTaskAPI(task) {
 
 
 
-export function updateTask(task, id) {
-  request.put(`/${id}`)
+export function updateTaskAPI(task) {
+  return request.put(`${apiUrl}/${task.id}`)
     .send(task)
     .then(res => {
       return res.body
     })
-    .catch(logError)
+    .catch(err => {
+      console.log('It broke')
+    })
 }
 
 export function deleteTaskAPI(id) {
-  return request.delete(`/tasks/${id}`)
+  return request.delete(`${apiUrl}/${id}`)
     .then(res => {
       return res.body
     })

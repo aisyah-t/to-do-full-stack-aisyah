@@ -8,7 +8,7 @@ export const CHANGE_VIEW = 'CHANGE_VIEW'
 export const CURRENT_TASK = 'CURRENT_TASK'
 export const FILTER_BY = 'FILTER_BY'
 
-import { addTaskAPI, deleteTaskAPI, } from '../apis/tasks'
+import { addTaskAPI, deleteTaskAPI, updateTaskAPI } from '../apis/tasks'
 
 export const currentTask = (task) => {
   return {
@@ -74,13 +74,12 @@ export function addNewTask (task) {
     priority: 'low',
     completed: false
   }
-  // console.log(newTask)
+  console.log(newTask)
  
   return (dispatch) => {
    addTaskAPI(newTask)
-      .then(res => {
-        console.log(res)
-        newTask.id = res.body
+      .then(id => {
+        newTask.id = id
         dispatch(addTask(newTask))
       })
       .catch(err => {
@@ -94,7 +93,7 @@ export function addNewTask (task) {
 
 export const deleteMyTask = (id) => {
   return (dispatch) => {
-    return deleteTaskAPI(id)
+     deleteTaskAPI(id)
     .then(() => {
       dispatch(deleteTask(id))
     })
@@ -106,10 +105,12 @@ export const deleteMyTask = (id) => {
 
 export const updateMyTask = (task) => {
   return (dispatch) => {
-    return request.put(`/tasks/${task.id}`)
-    .send(task)
+     updateTaskAPI(task)
     .then(() => {
       dispatch(updateTask(task))
+    })
+    .catch(err => {
+      console.log('It broke')
     })
   }
 }
