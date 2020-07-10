@@ -5,26 +5,22 @@ import Todo from './Todo'
 
 class App extends React.Component {
 
-// componentDidMount(){
-
-// this.props.dispatch(receivedTask())
-
-// }
-
 
   render() {
-
     
     return (
 
        <>
-     
       <Todo/>
      </> 
     )
   }
 }
-
+ //strings
+ //numbers
+ //booleans explain later
+ //null
+ //
 
 
 

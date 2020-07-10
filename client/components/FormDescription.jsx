@@ -1,6 +1,6 @@
 import React from 'react'
-import {editTask, removeTask} from '../apis/api'
-import {updateTask, deleteTask} from '../actions/index'
+import {editTask} from '../apis/api'
+import {updateTask } from '../actions/index'
 import {connect} from 'react-redux'
 
 class  FormDescription extends React.Component {
@@ -47,7 +47,7 @@ render(){
 
   <form onSubmit={this.handleSubmit}>
          <input type="text" name="description" defaultValue={this.state.description} onChange={this.handleChange}/>
-         <input type="submit" onSubmit={this.handleSubmit} /> 
+         <input type="button" /> 
   </form>
  
  ) 

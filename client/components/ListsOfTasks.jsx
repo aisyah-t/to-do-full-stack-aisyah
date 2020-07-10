@@ -12,6 +12,7 @@ class ListOfTasks extends React.Component {
 
         showDetails:false,
         DescriptionClicked:false,
+        showDeleteButton:false,
        
     }
 
@@ -19,7 +20,7 @@ class ListOfTasks extends React.Component {
 
  e.preventDefault()
         
- this.setState({ showDetails:true, })    
+ this.setState({ showDetails:true, showDeleteButton:true})    
   }   
 
   showTextField=()=>{
@@ -54,7 +55,7 @@ render(){
 return(
 <ul> 
 <li><button className="buttonDeets" onClick={this.handleClick} name={this.props.tasks.id}>{this.props.tasks.Tasks}</button></li>
-<button onClick={this.handleDelete}>Delete</button>
+{!this.state.showDeleteButton  && <button onClick={this.handleDelete}>Delete</button> }
 
 {this.state.showDetails ? 
 <ol>

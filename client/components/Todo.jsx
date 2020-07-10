@@ -25,7 +25,7 @@ class Todo extends React.Component {
         {this.props.tasks.map((task) => (
           <ListOfTasks tasks={task} />
         ))}
-        <Form />
+        <Form task={this.props.tasks} />
       </>
     );
   }

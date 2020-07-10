@@ -1,5 +1,7 @@
-import React from "react";
-import { addTask } from "../apis/api";
+import React from "react"
+import { addTask } from "../apis/api"
+import {updateTask} from "../actions/index"
+import {connect} from 'react-redux'
 
 class Form extends React.Component {
   state = {
@@ -17,12 +19,19 @@ class Form extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-
+     
+    const newTask = {
+      Tasks: this.state.task,
+      Description: this.state.description,
+      Priority: this.state.priority,
+      Completed: this.state.completed,
+  }
 
     addTask(this.state).then((res) => {
-      
-    });
-  };
+      this.props.dispatch(updateTask(newTask))
+
+    })
+  }
 
   render() {
     return (
@@ -32,16 +41,11 @@ class Form extends React.Component {
           name="task"
           defaultValue={this.state.task}
           onChange={this.handleChange}/>
-        <input type="submit" onSubmit={this.handleSubmit}/>
-
-    
+        <input type="submit"/>
       </form>
     );
   }
 }
 
-//local state
-//this state will update globalstate
-//Add tasks
 
-export default Form;
+export default connect() (Form)

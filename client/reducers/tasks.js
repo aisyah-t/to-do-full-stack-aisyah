@@ -5,6 +5,7 @@ import {RECEIVED_TASK,UPDATE_TASK, DELETE_TASK} from '../actions/index'
 //bananas is the value
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+       
         case RECEIVED_TASK:
        
         return action.tasks
@@ -17,9 +18,11 @@ const reducer = (state = initialState, action) => {
             if(task.id == action.task.id){ 
                 return action.task
             }
-            else{
+          
+           else {
                 return task
             }
+     
        
          })
         

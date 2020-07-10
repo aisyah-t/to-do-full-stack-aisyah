@@ -15,7 +15,6 @@ function getTask(db = connection) {
 }
 
 function addTask(task, db = connection) {
-  console.log(task);
 
   return db("TodoList").insert({
     Tasks: task.task,
