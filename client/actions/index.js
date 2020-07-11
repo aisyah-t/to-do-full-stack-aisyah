@@ -16,9 +16,8 @@ export const getToDos = (tasksArray) => {
     return dispatch => {
     apiAddTask(task)
         .then(() => {
-          
-          dispatch(fetchToDoList)
-          console.log('all done')
+          console.log('thunk done')
+          dispatch(fetchToDoList())
         })
         .catch(err => {
           console.log('not done')
@@ -31,7 +30,7 @@ export const getToDos = (tasksArray) => {
     return (dispatch) => {
       getTasks()
         .then(tasksArray => {
-          console.log('data in thunk action' , tasksArray)
+          console.log('2nd stage thunk action' , tasksArray)
           dispatch(getToDos(tasksArray))
         })
         .catch(err => {

@@ -1,23 +1,24 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import {deleteTaskApiFunction} from '../api'
+import { deleteTaskApiFunction } from '../api'
 
 class Task extends React.Component {
 
   state = {
-    showFrom: false
+    showForm: false
   }
-   
+
   deleteTask = event => {
-    console.log('in task component' , this.props.data.id)
+    console.log('in task component', this.props.data.id)
     deleteTaskApiFunction(this.props.data.id)
   }
 
   updateTask = event => {
     this.setState({
-      showForm: true
+      showForm: !this.state.showForm
     })
-    console.log('blblblblblblaaaa')
+    console.log('click!')
 
   }
 
@@ -25,19 +26,37 @@ class Task extends React.Component {
   // <form>
 
   // </form>
-  
-    render() {
-      return (
-        <div id = 'indivTasks'>
-          <h3>{this.props.data.task}</h3>
-          <button onClick = {this.deleteTask}> delete </button>
-          <button onClick = {this.updateTask}> update </button>
-        </div>
-        
-        
-        
-      )
-    }
-  }
 
-  export default Task
+  render() {
+    return (
+      <div id='indivTasks'>
+        <h3 id='taskText'>{this.props.data.task}</h3>
+        <div className="Up-Del-Button">
+        <button onClick={this.deleteTask}> delete </button>
+        <button onClick={this.updateTask}> update </button>
+        </div>
+       
+
+        {this.state.showForm ?
+        <div className="updateForm">
+          <form>
+            <label>
+              Update Task:
+        <input type="text" name="UpdatedTask" />
+            </label>
+            <input type="submit" value="Submit" />
+          </form> 
+          </div> :
+          ''
+        }
+
+
+      </div>
+
+
+
+    )
+  }
+}
+
+export default connect()(Task)
