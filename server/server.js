@@ -1,12 +1,11 @@
-const path = require('path')
+// const path = require('path')
 const express = require('express')
-
-const todos = require('./routes/tasks')
+const todos = require('./routes/todos')
 
 const server = express()
 
 server.use(express.json())
-server.use(express.static(path.join(__dirname, '../public')))
+server.use(express.static('public'))
 
 server.use('/api/v1/todos', todos)
 

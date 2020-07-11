@@ -1,49 +1,35 @@
 import React from 'react'
-import Todos from './Todos'
-import AddTask from './AddTask'
-import { getTask } from '../apis/api'
+import { connect } from 'react-redux'
+import Tasks from './Tasks'
+import { getTodos } from '../actions/index'
+
 
 class App extends React.Component {
-  
-  state = {
-    tasks: []
-  }
 
   componentDidMount() {
-    console.log('did mount')
-    getTask()
-      .then(data => {
-        // console.log(data)
-        // console.log(typeof data)
-        this.setState({
-          tasks: data
-        })
-      })
+    this.props.dispatch(getTodos())
   }
 
   render() {
+    console.log(this.props)
     return (
       <div id="app" className="app">
-      <h1>Todos</h1>
-
-      <ul className="todo-list">
-            {this.state.tasks.map(task => {
-              return (
-                <>
-                  <Todos data={task} />
-                </>
-              )
-            })}
-          </ul>
-            <AddTask/>
-      {/* <form>
-        <input type="text" name="task"/>
-        <input type="submit" value="Add"/>
-      </form> */}
-    </div>
+        <h1>Todos</h1>
+        <ul className="todo-list">
+          <>
+            <Tasks tasks={this.props.tasks} />
+          </>
+        </ul>
+      </div>
     )
   }
 }
 
+function mapStateToProps(globalState) {
+  return {
+    // banana: 'banana',
+    tasks: globalState.tasks
+  }
+}
 
-export default App
+export default connect(mapStateToProps)(App)
