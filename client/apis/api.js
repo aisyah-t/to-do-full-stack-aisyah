@@ -8,12 +8,12 @@ export function getTodosApi () {
     .then(response => response.body)
 }
 
-// export function makeTaskApi (todo) {
-//   return request
-//     .post(todoUrl)
-//     .send(todo)
-//     .then(response => response.body)
-// }
+export function addTaskApi (task) {
+  return request
+    .post(todosUrl)
+    .send(task)
+    .then(response => request.body)
+}
 
 // export function updateTaskApi (widget){
 //   return request

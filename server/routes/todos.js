@@ -13,18 +13,16 @@ router.get('/', (req, res) => {
     })
 })
 
-// router.post('/', (req, res) => {
-//   console.log('-----server side request body ' , req.body)
-//   // console.log(req.body)
-
-//   db.saveTask(req.body)
-//     .then(todo => {
-//       res.send(todo)
-//     })
-//     .catch(err => {
-//       res.status(500).send(err.message)
-//     })
-// })
+router.post('/', (req, res) => {
+  // console.log('-----server side request body ' , req.body)
+  db.addTodo(req.body)
+    .then(todo => {
+      res.send(todo)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
 
 // router.put('/', (req, res) => {
 //   console.log('data in new server side route' , req.body)

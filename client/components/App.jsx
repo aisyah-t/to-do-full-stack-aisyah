@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Tasks from './Tasks'
+import AddTask from './AddTask'
 import { getTodos } from '../actions/index'
 
 
@@ -16,10 +17,9 @@ class App extends React.Component {
       <div id="app" className="app">
         <h1>Todos</h1>
         <ul className="todo-list">
-          <>
-            <Tasks tasks={this.props.tasks} />
-          </>
+          <Tasks tasks={this.props.tasks} />
         </ul>
+        <AddTask tasks={this.props.tasks} />
       </div>
     )
   }
