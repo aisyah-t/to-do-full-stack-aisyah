@@ -12,7 +12,7 @@ export const  receivedTask = (tasks)=> {
 
 
 export const updateTask = (task) =>{
-console.log(task)
+
 return {
  
  type: UPDATE_TASK,

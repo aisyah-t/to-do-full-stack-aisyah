@@ -41,7 +41,7 @@ class Form extends React.Component {
           name="task"
           defaultValue={this.state.task}
           onChange={this.handleChange}/>
-        <input type="submit"/>
+        <input type="submit" value="ADD"/>
       </form>
     );
   }
