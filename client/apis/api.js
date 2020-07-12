@@ -23,9 +23,12 @@ export function deleteTaskApi(id) {
     })
 }
 
-// export function updateTaskApi (widget){
-//   return request
-//   .put(widgetUrl)
-//   .send(widget)
-//   .then(response => response.body)
-// }
+export function updateTaskApi(task) {
+  // console.log(task)
+  return request
+    .patch(todosUrl + task.taskId)
+    .send(task)
+    .then(response => {
+      return response.body
+    })
+}

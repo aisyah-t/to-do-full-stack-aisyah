@@ -9,8 +9,15 @@ const reducer = (state = initialState, action) => {
             return [...state, action.task]
         case 'DELETE_TASK':
             return state.filter((task) => task.id !== action.id)
+        case 'UPDATE_TASK':
+            return state.map(task => {
+                if (task.id == action.task.id) {
+                    return action.task
+                } else return task
+            })
 
-        default: return state
+        default:
+            return state
     }
 }
 

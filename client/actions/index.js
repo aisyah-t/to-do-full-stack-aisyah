@@ -3,8 +3,9 @@
 export const SET_TASKS = 'SET_TASKS'
 export const ADD_TASK = 'ADD_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
+export const UPDATE_TASK = 'UPDATE_TASK'
 
-import { getTodosApi, addTaskApi, deleteTaskApi } from '../apis/api'
+import { getTodosApi, addTaskApi, deleteTaskApi, updateTaskApi } from '../apis/api'
 
 // --- Set Todos --- //
 export function setTodos(tasks) {
@@ -51,6 +52,23 @@ export function deleteTask(id) {
 export function deleteTodo(id) {
   return dispatch => {
     deleteTaskApi(id)
+      .then(() => {
+        dispatch(getTodos())
+      })
+  }
+}
+
+// --- Update Tasks --- //
+export function updateTask(id) {
+  return {
+    type: UPDATE_TASK,
+    id: id
+  }
+}
+
+export function updateTodo(task) {
+  return dispatch => {
+    updateTaskApi(task)
       .then(() => {
         dispatch(getTodos())
       })

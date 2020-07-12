@@ -6,7 +6,7 @@ module.exports = {
   getTodo,
   addTodo,
   deleteTodo,
-  // updateTask,
+  updateTodo
 }
 
 function getTodo(db = connection) {
@@ -22,12 +22,17 @@ function addTodo(todo, db = connection) {
   })
 }
 
-function deleteTodo(id, db=connection){
+function deleteTodo(id, db = connection) {
   return db('todos').where('id', id).delete()
 }
 
-  // function updateTask(todo, id, db = connection) {
-  //   return db('todos').update(todo).where('id', id)
-  // }
+function updateTodo(todo, id, db = connection) {
+  return db('todos').where('id', id).update({
+    task: todo.task,
+    taskDetails: todo.taskDetails,
+    priority: todo.priority,
+    completed: todo.completed
+  })
+}
 
 

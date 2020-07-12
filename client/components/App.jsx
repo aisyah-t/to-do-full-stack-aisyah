@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div id="app" className="app">
         <h1>Todos</h1>
