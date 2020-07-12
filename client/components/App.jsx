@@ -1,15 +1,38 @@
 import React from 'react'
+import Task from "./task"
+import {dostuff, addmore, gettodos, fetchtodos} from "../actions/index"
+import { gettasks, createtasks} from "../apis/api"
+import {connect} from "react-redux"
 
 class App extends React.Component {
-  componentDidMount() {
+  
+  componentDidMount(){
+    
+  
+      this.props.dispatch(fetchtodos())
+   
   }
-
+  
   render() {
+    console.log(this.props)
     return (
-      <h1>Todo</h1>
+      <>
+        this is the app
+       <Task/>
+      
+         
+      </>
+      
     )
   }
 }
 
+function mapStateToProps(globalstate){
+return {
+  addtodos: globalstate.addtodos,
+ 
 
-export default App
+}
+}
+
+export default connect (mapStateToProps)(App)
