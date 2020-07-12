@@ -11,13 +11,11 @@ state ={
 
 }
    
-   
 handleChange = (event) => {
        
         event.preventDefault();
         const value = event.target.value;
-        this.setState({ [event.target.name]: value })
-    
+        this.setState({ [event.target.name]: value }) 
      }
 
 handleSubmit = (event) => {   
@@ -31,34 +29,36 @@ const newTask = {
         Description: this.state.description,
         Priority: this.props.task.Priority,
         Completed: this.props.task.Completed,
-    }
+    } 
     
-    const id = this.props.task.id 
+     const id = this.props.task.id 
     
     editTask(id,this.state.description) 
     .then(()=>{this.props.dispatch(updateTask(newTask)) })
 
-this.setState({showForm:true})  
+    this.setState({showForm:true})  
      
 }
 
 
+renderForm=(handlesubmit, description, handlechange)=>{
 
-    // hideButton=()=>{
-      
-    // }  
+    return(
+        <>
+         <form onSubmit={handlesubmit}>
+         <input type="text" name="description" defaultValue={description} onChange={handlechange}/>
+         <input type="submit"/> 
+         </form>
+        </>
+    )
+}
 
  render(){ 
  
  const showForm = this.state.showForm
- 
  return(
      <>
-         { !showForm &&
-         <form onSubmit={this.handleSubmit}>
-         <input type="text" name="description" defaultValue={this.state.description} onChange={this.handleChange}/>
-         <input type="submit" onSubmit={this.handleSubmit} /> 
-         </form>}
+         {!showForm && this.renderForm(this.handleSubmit, this.state.description, this.handleChange)}
     </>
  )
 

@@ -5,7 +5,6 @@ import Todo from './Todo'
 
 class App extends React.Component {
 
-
   render() {
     
     return (
@@ -16,12 +15,4 @@ class App extends React.Component {
     )
   }
 }
- //strings
- //numbers
- //booleans explain later
- //null
- //
-
-
-
 export default App

@@ -35,7 +35,7 @@ return<li><button className="buttonDeets" onClick={handleclick} name={taskId}>{t
 
 
 renderTasksDescription=(description, showtextfield)=>{
-  return<li><button className="buttonDeets" onClick={showtextfield}>Description:{description}</button></li>
+  return<li><button id="buttonDeets description-tittle"  onClick={showtextfield}>Description:{description}</button></li>
 }
 
 renderPriorityButton=(priority)=>{
@@ -67,16 +67,16 @@ render(){
 return(
 <ul> 
  {this.renderTasksLists(task, taskId, this.handleClick)}
-  {!this.state.showDeleteButton  && <button onClick={this.handleDelete}>Delete</button> }
+  {!this.state.showDeleteButton  && <button id="delete-button" onClick={this.handleDelete}>Delete</button> }
 
     {
     this.state.showDetails ? 
-    <ol>
+    <ul>
         {this.renderTasksDescription(description, this.showTextField)}
         {this.state.DescriptionClicked && <FormDescription task={this.props.tasks}/>}
         {this.renderPriorityButton(priority)}
         {this.renderCompletedButton(completed)}
-    </ol>
+    </ul>
      : <></>
      }
 
