@@ -19,3 +19,68 @@ Here's a list of steps in case they are useful.  You can build in any order you 
 1.  Build API Client in the front end
 1.  Build Thunk Actions to get task from the API 
 1.  Build Redux Actions to save task data from the API (remove hard-code initialState)
+
+# Animal Collective Nouns
+
+## Endpoints
+
+***GET*** /api/animals/
+
+Response Body:
+```JSON
+[
+  {
+    "id": 1,
+    "name": "duck",
+  },
+  {
+    "id": 2,
+    "name": "cat",
+  }
+]
+```
+
+***GET*** /api/animals/:id/
+
+Response Body:
+```JSON
+[
+  {
+    "id": 1,
+    "name": "duck",
+    "nouns": [
+      "badling or badelynge",
+      "paddling",
+      "plump",
+      "raft"
+    ]
+  }
+]
+```
+
+***POST*** /api/animals/
+
+Request Body:
+```JSON
+{
+  "name": "duck",
+  "nouns": [
+      "badling or badelynge",
+      "paddling",
+      "plump",
+      "raft"
+    ]
+}
+```
+
+
+## Error Reporting
+
+Standard Error Response Body:
+```JSON
+{
+  "success": false,
+  "message": "Something went wrong",
+  "error_code": 684
+}
+```
