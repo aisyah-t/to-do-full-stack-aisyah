@@ -12,8 +12,10 @@ function listTasks(db = connection) {
   return db('tasks').select().orderBy('priority', 'asc')
 }
 
+
+
 function addTask(task, db = connection) {
-  return db('tasks').insert(task)
+  return db('tasks').insert(task, 'id')
     .then(ids => {
       return ids[0]
     })
