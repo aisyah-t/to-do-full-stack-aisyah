@@ -31,8 +31,8 @@ class AddTask extends React.Component {
   render() {
     return (
       <div>
-        <h2>Add A New Task!</h2>
         <form className='form' onSubmit={this.handleSubmit} >
+        <h2>Add A New Task!</h2>
 
           <div className='form-row'>
             <label >Task</label>

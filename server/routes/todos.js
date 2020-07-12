@@ -24,6 +24,16 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+  db.deleteTodo(req.params.id)
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+})
+
 // router.put('/', (req, res) => {
 //   console.log('data in new server side route' , req.body)
 //   db.updateTask(req.body)
@@ -35,14 +45,5 @@ router.post('/', (req, res) => {
 //     })
 // })
 
-// router.delete('/:id', (req, res) => {
-//   db.deleteTask(req.params.id)
-//   .then(() => {
-//     res.sendStatus(200)
-//   })
-//   .catch(err => {
-//     res.status(500).send(err.message)
-//   })
-// })
 
 module.exports = router

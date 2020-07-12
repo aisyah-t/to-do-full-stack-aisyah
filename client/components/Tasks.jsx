@@ -1,7 +1,13 @@
 import React from 'react'
-// import { connect } from 'react-redux'
+import { connect } from 'react-redux'
+import { deleteTodo } from '../actions'
 
 class Tasks extends React.Component {
+
+  handleClick = (event, id) => {
+    event.preventDefault()
+    this.props.dispatch(deleteTodo(id))
+  }
 
   render() {
 
@@ -13,6 +19,7 @@ class Tasks extends React.Component {
             <p><b>Task details:</b> {task.taskDetails}</p>
             <p><b>Priority:</b> {task.priority}</p>
             <p><b>Completed:</b> {task.completed}</p>
+            <button className='update' onClick={(event) => this.handleClick(event, task.id)}> Remove task </button>
           </li>
         </>
       )
@@ -22,4 +29,4 @@ class Tasks extends React.Component {
 
 }
 
-export default Tasks
+export default connect() (Tasks)
