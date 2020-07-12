@@ -15,11 +15,12 @@ class Tasks extends React.Component {
     return this.props.tasks.map((task) => {
       return (
         <>
-          <li className='todo-list'>
+          {/* <li className='todo-list'> */}
+          <li className={`todo-list${task.priority ? ' priority' : ''}`}>
             <h2>Task: {task.task}</h2>
             <p><b>Task details:</b> {task.taskDetails}</p>
-            <p><b>Priority:</b> {task.priority}</p>
-            <p><b>Completed:</b> {task.completed}</p>
+            <p><b>Priority:</b> {(task.priority == 1) ? 'true' : 'false'}</p>
+            <p><b>Completed:</b> {(task.completed == 1) ? 'true' : 'false'}</p>
             <button className='update' onClick={(event) => this.handleClick(event, task.id)}> Remove Task </button>
             <UpdateTask taskId={task.id}/>
           </li>

@@ -22,7 +22,7 @@ h1 {
   margin: 4rem auto;
   padding: 2rem 3rem;
   max-width: 420px;
-  background-color: #FF6666;
+  background-color: #66a8ff;
   color: #F7F1F1;
 }
 
@@ -57,7 +57,7 @@ form input {
 form input[type="submit"] {
   padding:0 1.3rem;
   color: #F7F1F1;
-  background: #FF6666;
+  background: #66a8ff;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,.3);
   margin-left: 5px;
@@ -86,7 +86,7 @@ form input[type="submit"] {
 .update {
   padding:0 1.3rem;
   color: #F7F1F1;
-  background: #FF6666;
+  background: #66a8ff;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,.3);
   margin-left: 5px;
@@ -94,4 +94,15 @@ form input[type="submit"] {
   transition: background .2s ease-out;
   height: 3rem;
   width: 100%;
+}
+
+.priority {
+  /* display: flex; */
+  margin: 0 -3rem 4px;
+  padding: 1.1rem 3rem;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bolder;
+  color: black;
+  /* background-color: yellowgreen; */
 }
