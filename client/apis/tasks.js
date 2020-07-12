@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const apiUrl = 'http://localhost:3000/tasks'
+const apiUrl = '/tasks'
 
 
 export function listTasks() {
