@@ -26,15 +26,21 @@ export const deletetask  = (data) => {
     }
 }
 export const addtodo  = (data) => {
-    console.log("running add todo ", data)
+    
     return {
         type: "ADDTODO",
         data: data
     }
 
 }
+export const edittodo = (data) => {
+    return {
+        type: "EDITTODO",
+        data: data
+    }
+}
 export const fetchtodos  = () => {
-    console.log("running fetch todo ")
+    
     return (dispatch) => {
         gettasks()
         .then(data => {

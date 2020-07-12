@@ -1,13 +1,14 @@
 import React from "react"
-import { deletetaskapi } from "../apis/api"
+import { deletetaskapi, updatetask } from "../apis/api"
 import {connect} from "react-redux"
-import {deletetask} from "../actions/index"
+import {deletetask, edittodo} from "../actions/index"
 //import { deleteTask } from "../../server/db/db"
 
 class Part extends React.Component {
     state = {
         form: false,
         forminput: {
+            id: this.props.id,
             name: this.props.name, 
             info: this.props.info, 
             priority: this.props.priority,
@@ -17,7 +18,7 @@ class Part extends React.Component {
     handleSubmit = event => {
        
         event.preventDefault()
-        console.log("form recived ", this.state.forminput)
+       
        
         // this.setState({
         //   forminput: {
@@ -32,7 +33,7 @@ class Part extends React.Component {
 
       }
       handleChange = event => {
-          console.log(event.target.value)
+        
         this.setState({
           forminput: {
             ... this.state.forminput,[event.target.name]: event.target.value
@@ -41,12 +42,16 @@ class Part extends React.Component {
       }
 
     delete = () => {
-        console.log("should delete ", this.props)
+       
         this.props.dispatch(deletetask(this.props.name))
         deletetaskapi(this.props.name)
     }
     edit= () => {
+        if(this.state.form) {
         
+          updatetask(this.state.forminput)
+          this.props.dispatch(edittodo(this.state.forminput))
+        }
         this.setState({
            
             form: !this.state.form,

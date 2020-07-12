@@ -6,7 +6,19 @@ function addtodos (state = [], action) {
       case "ADDTODO":
         return ([...state, action.data])
       case "DELETETASK":
-            return state.filter(elem => elem.name != action.data);
+        return state.filter(elem => elem.name != action.data);
+      case "EDITTODO":
+   
+        
+        return state.map(elem =>  {
+       
+          if (elem.id == action.data.id) {
+           
+            return action.data
+          }
+          else return elem
+          
+        } );
       default:
         return state
     }

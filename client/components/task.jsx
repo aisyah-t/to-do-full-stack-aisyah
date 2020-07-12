@@ -17,7 +17,7 @@ class Tasks extends React.Component {
       handleSubmit = event => {
        
         event.preventDefault()
-        console.log("form recived ", this.state.forminput)
+       
        
         // this.setState({
         //   forminput: {
@@ -48,7 +48,7 @@ class Tasks extends React.Component {
                     <ul className="todo-list">
                         {
                             this.props.tasks.map(elem => { 
-                              return <Part key={elem.id} name={elem.name} info={elem.info} priority={elem.priority}/> 
+                              return <Part key={elem.id} id={elem.id} name={elem.name} info={elem.info} priority={elem.priority}/> 
                             })
                         }
                     </ul>

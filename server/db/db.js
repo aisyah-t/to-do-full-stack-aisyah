@@ -35,6 +35,7 @@ function deleteTask(data, db = connection) {
 
 function editTask(data, db = connection) {
 console.log("running edit task")
-return db('tasks')
-
+console.log(data.data)
+return db('tasks').where("id", data.data.id).update(data.data)
+//, "info", data.info, "priority", data.priority
 }

@@ -25,7 +25,7 @@ h1 {
   background-color: #ff6666;
   color: #f7f1f1;
  
-  animation: 0.1s linear 30s infinite running spin;
+  animation: 0.1s linear 120s infinite running spin;
 }
 
 .todo-list {
