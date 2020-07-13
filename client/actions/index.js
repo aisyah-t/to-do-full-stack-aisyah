@@ -1,10 +1,15 @@
 export const SET_TASKS = 'SET_TASKS'
 export const ADD_TASK = 'ADD_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
-export const GET_TASK_BY_ID = 'GET_TASK_BY_ID'
 export const UPDATE_TASK = 'UPDATE_TASK'
 
-import { getTasks as apiGetTasks, addTask as apiAddTask, deleteTask as apiDeleteTask, getTask as apiGetTask, updateTask as apiUpdateTask } from '../apis/api'
+import { 
+    getTasks as apiGetTasks, 
+    addTask as apiAddTask, 
+    deleteTask as apiDeleteTask, 
+    getTask as apiGetTask, 
+    updateTask as apiUpdateTask 
+} from '../apis/api'
 
 export function saveTasks(tasks) {
     return {
@@ -23,13 +28,6 @@ export function addTask(task) {
 export function deleteTask(taskId) {
     return {
         type: DELETE_TASK,
-        taskId: taskId
-    }
-}
-
-export function getTaskById(taskId) {
-    return {
-        type: GET_TASK_BY_ID,
         taskId: taskId
     }
 }
@@ -83,7 +81,7 @@ export function editTask(taskId, updatedTask) {
     return dispatch => {
         // console.log('Task ID is: ', taskId)
         // console.log('Task is: ', task)
-        apiGetTask(taskId)
+        apiUpdateTask(taskId, updatedTask)
             .then(dispatch(updateTask(taskId, updatedTask)))
     }
 }

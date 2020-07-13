@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 import { removeTask } from '../actions'
 import UpdateTask from './UpdateTask'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
+
 
 class Task extends React.Component {
 
@@ -11,7 +12,7 @@ class Task extends React.Component {
         readTasks: true,
     }
 
-    editMode = (evt) => {
+    editMode = () => {
         this.setState({
             readTasks: false
         })

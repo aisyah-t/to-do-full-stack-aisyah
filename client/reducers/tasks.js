@@ -1,4 +1,4 @@
-import { SET_TASKS, ADD_TASK, DELETE_TASK, GET_TASK_BY_ID, UPDATE_TASK } from '../actions'
+import { SET_TASKS, ADD_TASK, DELETE_TASK, UPDATE_TASK } from '../actions'
 
 const initialState = []
 
@@ -10,10 +10,12 @@ export const tasks = (state = initialState, action) => {
             return [...state, action.task]
         case DELETE_TASK:
             return state.filter(task => task.id !== action.taskId)
-        case GET_TASK_BY_ID:
-            return state.find(task => task.id == action.taskId)
         case UPDATE_TASK:
-            return action.updatedTask
+            return state.map(task => {
+                if (task.id == action.taskId) {
+                    return action.updatedTask
+                } else return task
+            })
         default:
             return state
     }

@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 import Task from './Task'
 import AddTask from './AddTask'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+
 
 class ToDos extends React.Component {
 
@@ -31,7 +32,7 @@ class ToDos extends React.Component {
                 <FontAwesomeIcon icon={faPlusSquare} size="6x" onClick={this.hideTasks} />
                 {this.state.showTasks
                     ?
-                    <table className="ten columns">
+                    <table className="twelve columns">
                         <thead>
                             <tr>
                                 <td><h5>Task</h5></td>

@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { editTask } from '../actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons'
-import { editTask } from '../actions'
+
 
 class UpdateTask extends React.Component {
 
@@ -27,19 +28,19 @@ class UpdateTask extends React.Component {
                 [evt.target.name]: evt.target.value
             }
         })
-        // console.log(this.state.task)
+        console.log(this.state.task)
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <tbody>
                 <tr>
                     <td>
-                        <textarea name="task" row="50" onChange={this.handleChange} defaultValue={this.props.task} />
+                        <textarea name="task" row="20" col="5" onChange={this.handleChange} defaultValue={this.props.task} />
                     </td>
                     <td>
-                        <select name="priority" onChange={this.handleChange} value={this.state.value}>
+                        <select name="priority" onChange={this.handleChange} defaultValue={this.props.priority} value={this.state.value}>
                             <option value="Low">Low</option>
                             <option value="Medium">Medium</option>
                             <option value="High">High</option>
@@ -47,7 +48,7 @@ class UpdateTask extends React.Component {
                         </select>
                     </td>
                     <td>
-                        <select name="completed" onChange={this.handleChange} value={this.state.value}>
+                        <select name="completed" onChange={this.handleChange} defaultValue={this.props.completed} value={this.state.value}>
                             <option value="No">No</option>
                             <option value="Yes">Yes</option>
                         </select>
@@ -56,7 +57,7 @@ class UpdateTask extends React.Component {
                         <FontAwesomeIcon icon={faSave} size="2x" onClick={this.handleSubmit} />
                     </td>
                     <td>
-                        <br/>
+                        <br />
                     </td>
                 </tr>
             </tbody>

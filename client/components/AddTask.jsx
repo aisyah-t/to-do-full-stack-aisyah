@@ -30,6 +30,7 @@ class AddTask extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <div className="eight columns">
                 <h3>Create a new task</h3>
