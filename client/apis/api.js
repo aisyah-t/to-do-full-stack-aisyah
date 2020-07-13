@@ -2,6 +2,8 @@ import request from 'superagent'
 
 const TodoListUrl= 'http://localhost:3000/api/v1/todoList/'
 
+
+
 export function getTask () {
     return request
       .get(TodoListUrl)
@@ -22,7 +24,7 @@ export function getTask () {
   }
   
   
-  export function editTask (id, description,) {
+  export function editTask (id, description) {
     
     return request
     .put(`${TodoListUrl}${id}`)
@@ -30,3 +32,4 @@ export function getTask () {
     .then(response => response.body)
   }
   
+ 

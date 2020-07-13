@@ -1,6 +1,6 @@
 import React from 'react'
 import {editTask} from '../apis/api'
-import {updateTask } from '../actions/index'
+import { updateTask } from '../actions/index'
 import {connect} from 'react-redux'
 
 class  FormDescription extends React.Component {
@@ -31,7 +31,7 @@ const newTask = {
         Completed: this.props.task.Completed,
     } 
     
-     const id = this.props.task.id 
+ const id = this.props.task.id 
     
     editTask(id,this.state.description) 
     .then(()=>{this.props.dispatch(updateTask(newTask)) })

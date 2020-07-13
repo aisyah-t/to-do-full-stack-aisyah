@@ -39,23 +39,40 @@ router.delete('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
+    const id = req.params.id
+    const task = req.body.description
+    
+    db.editTask(id,task)
+    .then(() =>{
+      db.getTask()
+    })
+    .then(tasks =>{
+      res.send(tasks)
+    })
+    .catch(err => {
+      res.status(500).send(err.message)
+    })
+
+})
+
+
+router.put('/:id', (req, res) => {
+  
   const id = req.params.id
-  const task = req.body.description
-  console.log(task);
-  
-  
-  db.editTask(id, task)
+  const task = req.body.priority
+ 
+  db.editTaskPriority(id, task)
   .then(() =>{
     db.getTask()
-   })
+  })
   .then(tasks =>{
     res.send(tasks)
   })
   .catch(err => {
     res.status(500).send(err.message)
   })
-
 })
+
 
 
 module.exports = router

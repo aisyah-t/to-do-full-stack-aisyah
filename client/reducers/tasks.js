@@ -2,7 +2,6 @@ const initialState = []
 import {RECEIVED_TASK,UPDATE_TASK, DELETE_TASK} from '../actions/index'
 
 
-//bananas is the value
 const reducer = (state = initialState, action) => {
     switch (action.type) {
        
@@ -12,25 +11,24 @@ const reducer = (state = initialState, action) => {
 
         case UPDATE_TASK:
          
-     
-       return state.map( task =>{
-       
+       return state.map(task =>{
+           
             if(task.id == action.task.id){ 
                 return action.task
-            }
-          
-           else {
+           
+            }else {
+             
                 return task
             }
-     
-       
          })
-        
+
+       
+ 
          case DELETE_TASK:
           return state.filter(task => task.id !== action.id )
          
             default:
-        return state
+           return state
         }
     }
 

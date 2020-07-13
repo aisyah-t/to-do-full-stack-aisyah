@@ -1,6 +1,6 @@
 import React from "react"
-import { addTask } from "../apis/api"
-import {updateTask} from "../actions/index"
+import { addTask, getTask } from "../apis/api"
+import {updateTask, updateTaskDescription,receivedTask} from "../actions/index"
 import {connect} from 'react-redux'
 
 class Form extends React.Component {
@@ -20,16 +20,10 @@ class Form extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
      
-    const newTask = {
-      Tasks: this.state.task,
-      Description: this.state.description,
-      Priority: this.state.priority,
-      Completed: this.state.completed,
-  }
-
+    const task = this.props.task
+   
     addTask(this.state).then((res) => {
-      this.props.dispatch(updateTask(newTask))
-
+    this.props.dispatch(receivedTask(task))
     })
   }
 

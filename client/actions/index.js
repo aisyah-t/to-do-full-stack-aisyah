@@ -1,9 +1,10 @@
 export const RECEIVED_TASK ='RECEIVED_TASK'
-export const UPDATE_TASK = 'UPDATE_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
+export const UPDATE_TASK = "UPDATE_TASK"
+
 
 export const  receivedTask = (tasks)=> {
-  // console.log(tasks);
+
     return {
       type: RECEIVED_TASK,
        tasks: tasks
@@ -12,14 +13,15 @@ export const  receivedTask = (tasks)=> {
 
 
 export const updateTask = (task) =>{
-
-return {
- 
- type: UPDATE_TASK,
- task
-
-}
-
+  console.log(task)
+  
+  return {
+    
+    type: UPDATE_TASK,
+    
+    task
+    
+  }
 }
 
 
@@ -33,7 +35,6 @@ export const deleteTask =(id) =>{
       console.log('It broke')
     })
   }
- 
 }
 
 
