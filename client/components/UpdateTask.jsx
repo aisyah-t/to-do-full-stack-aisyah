@@ -1,5 +1,8 @@
 import React from 'react'
-import { editTask } from '../actions'
+import { connect } from 'react-redux'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
+import { getTask, editTask } from '../actions'
 
 class UpdateTask extends React.Component {
 
@@ -25,10 +28,10 @@ class UpdateTask extends React.Component {
         //     })
         // })
         editTask(this.state.task.id, this.state.task)
-        .then(task => {
-            console.log(task)
-            // Need to get all tasks again and redirect to homepage showing new task added
-        })
+            .then(task => {
+                console.log(task)
+                // Need to get all tasks again and redirect to homepage showing new task added
+            })
     }
 
     handleChange = (evt) => {
@@ -42,21 +45,44 @@ class UpdateTask extends React.Component {
     }
 
     render() {
+        console.log(this.props)
         return (
-            <>
-            <h3>UPDATE TASK</h3>
-            <form>
-                <label htmlFor="addTask">Task:</label>
-                <input type="text" name="task" onChange={this.handleChange} value={this.state.task.task}/>
-                <label htmlFor="addTask">Priority:</label>
-                <input type="text" name="priority" onChange={this.handleChange} value={this.state.task.priority}/>
-                <label htmlFor="addTask">Complete:</label>
-                <input type="text" name="completed" onChange={this.handleChange} value={this.state.task.completed}/>
-                <input type="submit" onClick={this.handleSubmit} value="Update Task"/>
-            </form>
-            </>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" name="task" onChange={this.handleChange} value={this.state.task.task} />
+                    </td>
+                    <td>
+                        <select name="priority" onChange={this.handleChange} value={this.state.value}>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="completed" onChange={this.handleChange} value={this.state.value}>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </td>
+                    <td>
+                        <FontAwesomeIcon icon={faSave} size="2x" onClick={this.handleSubmit} />
+                    </td>
+                    <td>
+                        <br/>
+                    </td>
+                </tr>
+            </tbody>
         )
     }
 }
 
-export default UpdateTask
+function mapStateToProps(globalState) {
+    // console.log(globalState)
+    return {
+        task: globalState.task
+    }
+}
+
+export default connect(mapStateToProps)(UpdateTask)

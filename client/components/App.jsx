@@ -1,8 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import ToDos from './ToDos'
-
 import { getTasks } from '../actions'
 
 class App extends React.Component {

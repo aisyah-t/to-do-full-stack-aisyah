@@ -6,7 +6,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
     db.getTasks()
         .then(tasks => {
-            res.send(tasks)
+            res.json(tasks)
         })
         .catch(err => {
             res.status(500).send(err.message)
@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
 
     db.addTask(newTask)
         .then(taskId => {
-            res.send(taskId)
+            res.json({ id: taskId[0] })
         })
         .catch(err => {
             res.status(500).send(err.message)
@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-    // console.log(req.params)
+
     const taskId = req.params.id
 
     db.deleteTask(taskId)
@@ -41,7 +41,7 @@ router.delete('/:id', (req, res) => {
 router.get('/:id', (req, res) => {
     db.getTask(req.params.id)
         .then(task => {
-            res.send(task)
+            res.json(task)
         })
 })
 

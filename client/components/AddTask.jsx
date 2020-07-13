@@ -1,5 +1,6 @@
 import React from 'react'
-import { addTask } from '../apis/api'
+import { connect } from 'react-redux'
+import { saveTask } from '../actions'
 
 
 class AddTask extends React.Component {
@@ -7,18 +8,15 @@ class AddTask extends React.Component {
     state = {
         task: {
             task: '',
-            priority: '',
+            priority: 'Low',
             completed: 'No'
         }
     }
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        addTask(this.state.task)
-        .then(id => {
-            console.log(id)
-            // Need to get all tasks again and redirect to homepage showing new task added
-        })
+        this.props.dispatch(saveTask(this.state.task))
+        this.props.showTasks()
     }
 
     handleChange = (evt) => {
@@ -33,20 +31,24 @@ class AddTask extends React.Component {
 
     render() {
         return (
-            <>
-            <h3>CREATE A NEW TASK</h3>
-            <form>
-                <label htmlFor="addTask">Task:</label>
-                <input type="text" name="task" onChange={this.handleChange} />
-                <label htmlFor="addTask">Priority:</label>
-                <input type="text" name="priority" onChange={this.handleChange} />
-                {/* <label htmlFor="addTask">Complete:</label>
-                <input type="text" name="completed" defaultValue="No" /> */}
-                <input type="submit" onClick={this.handleSubmit} value="Add Task"/>
-            </form>
-            </>
+            <div className="eight columns">
+                <h3>Create a new task</h3>
+                <form>
+                    <label htmlFor="addTask">Task:</label>
+                    <textarea name="task" rows="50" cols="50" onChange={this.handleChange} />
+                    <label htmlFor="addTask">Priority:</label>
+                    <select name="priority" onChange={this.handleChange} value={this.state.value}>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                    <input type="submit" onClick={this.handleSubmit} value="Add Task" />
+                </form>
+            </div>
         )
     }
 }
 
-export default AddTask
+
+export default connect()(AddTask)
