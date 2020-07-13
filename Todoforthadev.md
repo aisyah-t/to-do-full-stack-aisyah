@@ -8,12 +8,14 @@
 [x] - migrate latest
 [x] - seed run
 [x] - function(s)
+[ ] make noun table
+[ ] - make one to many relationship
 
 [x] routes
 [x] - animals api
 [x] - home (was already done)
-[ ] api
-[ ] - use db function in route
+[x] api
+[x] - use db function in route
 
 
 [ ] thunking

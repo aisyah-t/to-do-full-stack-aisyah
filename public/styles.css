@@ -6,9 +6,10 @@
 
 body {
   margin: 0;
-  background-color: #f7f1f1;
+  background-color: #263824;
   font-family: 'Quicksand', sans-serif;
   font-size: 16px;
+  color: #c5c5c5;
 }
 
 h1 {

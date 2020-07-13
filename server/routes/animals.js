@@ -9,5 +9,5 @@ router.get('/', (req, res) => {
     res.json(animals)
   })
 })
-
+// where do you get the nouns and animals
 module.exports = router
