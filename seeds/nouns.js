@@ -5,11 +5,11 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('nouns').insert([
-        {id: 1, noun: "sord", animal_id: 1},
-        {id: 2, noun: "badling", animal_id: 1},
-        {id: 3, noun: "waddling", animal_id: 1},
-        {id: 4, noun: "clowder", animal_id: 2},
-        {id: 5, noun: "pride", animal_id: 2}
+        {id: 1, word: "sord", animal_id: 1},
+        {id: 2, word: "badling", animal_id: 1},
+        {id: 3, word: "waddling", animal_id: 1},
+        {id: 4, word: "clowder", animal_id: 2},
+        {id: 5, word: "pride", animal_id: 2}
       ])
     })
 }

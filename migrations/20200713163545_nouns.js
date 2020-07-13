@@ -2,7 +2,7 @@
 exports.up = function(knex) {
   return knex.schema.createTable('nouns', (table) => {
     table.increments('id').primary()
-    table.string('noun')
+    table.string('word')
     table.integer('animal_id')
   })
 }
