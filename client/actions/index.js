@@ -35,6 +35,7 @@ export function updateItem(task, id) {
     updateTask(task, id)
       .then(task => {
         dispatch(updateTodo(task))
+        dispatch(fetchTodos())
       })
   }
 }

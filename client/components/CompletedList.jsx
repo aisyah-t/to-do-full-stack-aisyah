@@ -11,10 +11,6 @@ class CompletedList extends React.Component {
     completed: ''
   }
 
-  componentDidMount() {
-    this.props.dispatch(updateItem())
-  }
-
   render() {
     return(
       <>

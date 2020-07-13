@@ -23,6 +23,7 @@ class ToDoList extends React.Component {
       completed: true
     }, () => {
       console.log('yaya')
+      task.completed = true
       this.props.dispatch(updateItem(task, task.id))
     } )
     //then move that id into completed
@@ -30,13 +31,12 @@ class ToDoList extends React.Component {
   }
 
   render() {
-    console.log(this.props.tasks)
     return (
       <>
       <div id="app" className="app">
       <h1>Todos</h1>
       <ul className="todo-list">
-    {this.props.tasks.map(task => {return <form><label key={task.id}>{task.task}</label><input onChange={() => this.handleChange(task.id)}type="checkbox"></input></form>})}
+    {this.props.tasks.filter(task => !task.completed).map(task => {return <form><label key={task.id}>{task.task}</label><input onChange={() => this.handleChange(task)}type="checkbox"></input></form>})}
         
       </ul>
 

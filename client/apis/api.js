@@ -18,7 +18,7 @@ export function getTasks() {
 // }
 
 export function updateTask(task, id) {
-  return request.put(`/${id}`)
+  return request.patch(taskUrl + `${id}`)
     .send(task)
     .then(response => response.body)
 }
