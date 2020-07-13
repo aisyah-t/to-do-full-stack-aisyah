@@ -2,16 +2,19 @@
 
 [ ] back-end:
 
-[ ] db
+[x] db
 
 [x] - make and then
 [x] - migrate latest
 [x] - seed run
-[ ] - function(s)
+[x] - function(s)
 
-[ ] routes
-[ ] - animals api
-[ ] - home
+[x] routes
+[x] - animals api
+[x] - home (was already done)
+[ ] api
+[ ] - use db function in route
+
 
 [ ] thunking
 

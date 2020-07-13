@@ -1,10 +1,10 @@
 const connection = require('./connection')
 
-function getAnimalSummary (db = connection) {
+function getAnimalSummaries(db = connection) {
   return db('animals')
     .select('name', 'nouns')
 }
 
-module.export = {
-  getAnimalSummary,
+module.exports = {
+  getAnimalSummaries,
 }
