@@ -18,6 +18,12 @@ class Task extends React.Component {
         })
     }
 
+    readTasks = () => {
+        this.setState({
+            readTasks: true
+        })
+    }
+
     handleDelete = (evt) => {
         evt.preventDefault()
         this.props.dispatch(removeTask(this.props.id))
@@ -40,7 +46,7 @@ class Task extends React.Component {
                     </tbody>
                     :
                     <>
-                        <UpdateTask key={this.props.id} id={this.props.id} task={this.props.task} priority={this.props.priority} completed={this.props.completed}/>
+                        <UpdateTask key={this.props.id} id={this.props.id} task={this.props.task} priority={this.props.priority} completed={this.props.completed} readTasks={this.readTasks}/>
                     </>
                 }
             </>

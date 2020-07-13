@@ -32,7 +32,7 @@ class ToDos extends React.Component {
                 <FontAwesomeIcon icon={faPlusSquare} size="6x" onClick={this.hideTasks} />
                 {this.state.showTasks
                     ?
-                    <table className="twelve columns">
+                    <table className="ten columns">
                         <thead>
                             <tr>
                                 <td><h5>Task</h5></td>
