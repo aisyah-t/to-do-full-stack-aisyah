@@ -36,7 +36,7 @@ class UpdateTask extends React.Component {
             <tbody>
                 <tr>
                     <td>
-                        <textarea name="task" row="20" col="5" onChange={this.handleChange} defaultValue={this.props.task} />
+                        <textarea name="task" onChange={this.handleChange} defaultValue={this.props.task} />
                     </td>
                     <td>
                         <select name="priority" onChange={this.handleChange} defaultValue={this.props.priority} value={this.state.value}>
@@ -56,18 +56,11 @@ class UpdateTask extends React.Component {
                         <FontAwesomeIcon icon={faSave} size="2x" onClick={this.handleSubmit} />
                     </td>
                     <td>
-                        <br />
                     </td>
                 </tr>
             </tbody>
         )
     }
 }
-
-// function mapStateToProps(globalState) {
-//     return {
-//         task: globalState.tasks
-//     }
-// }
 
 export default connect()(UpdateTask)

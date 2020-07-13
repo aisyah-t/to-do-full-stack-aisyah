@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { saveTask } from '../actions'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
 
 
 class AddTask extends React.Component {
@@ -16,7 +18,7 @@ class AddTask extends React.Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
         this.props.dispatch(saveTask(this.state.task))
-        this.props.showTasks()
+        this.props.hideAddForm()
     }
 
     handleChange = (evt) => {
@@ -30,21 +32,28 @@ class AddTask extends React.Component {
 
     render() {
         return (
-            <div className="eight columns">
-                <h3>Create a new task</h3>
-                <form>
-                    <label htmlFor="addTask">Task:</label>
-                    <textarea name="task" rows="50" cols="50" onChange={this.handleChange} />
-                    <label htmlFor="addTask">Priority:</label>
+            <tr>
+                <td><textarea name="task" onChange={this.handleChange} /></td>
+                <td>
                     <select name="priority" onChange={this.handleChange} value={this.state.value}>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                         <option value="Urgent">Urgent</option>
                     </select>
-                    <input type="submit" onClick={this.handleSubmit} value="Add Task" />
-                </form>
-            </div>
+                </td>
+                <td>
+                    <select name="completed" onChange={this.handleChange} defaultValue="No" value={this.state.value}>
+                        <option value="No">No</option>
+                        <option value="Yes">Yes</option>
+                    </select>
+                </td>
+                <td>
+                    <FontAwesomeIcon icon={faSave} size="2x" onClick={this.handleSubmit} />
+                </td>
+                <td>
+                </td>
+            </tr>
         )
     }
 }

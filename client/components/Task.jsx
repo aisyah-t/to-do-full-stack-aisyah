@@ -34,18 +34,16 @@ class Task extends React.Component {
             <>
                 {this.state.readTasks
                     ?
-                    <tbody>
-                        <tr>
-                            <td>{this.props.task}</td>
-                            <td>{this.props.priority}</td>
-                            <td><input type="checkbox" name="completed" ></input></td>
-                            <td><FontAwesomeIcon icon={faEdit} size="2x" onClick={this.editMode} /></td>
-                            <td><FontAwesomeIcon icon={faTrashAlt} size="2x" onClick={this.handleDelete} /></td>
-                        </tr>
-                    </tbody>
+                    <tr>
+                        <td>{this.props.task}</td>
+                        <td>{this.props.priority}</td>
+                        <td><input type="checkbox" name="completed" ></input></td>
+                        <td><FontAwesomeIcon icon={faEdit} size="2x" onClick={this.editMode} /></td>
+                        <td><FontAwesomeIcon icon={faTrashAlt} size="2x" onClick={this.handleDelete} /></td>
+                    </tr>
                     :
                     <>
-                        <UpdateTask key={this.props.id} id={this.props.id} task={this.props.task} priority={this.props.priority} completed={this.props.completed} readTasks={this.readTasks}/>
+                        <UpdateTask key={this.props.id} id={this.props.id} task={this.props.task} priority={this.props.priority} completed={this.props.completed} readTasks={this.readTasks} />
                     </>
                 }
             </>

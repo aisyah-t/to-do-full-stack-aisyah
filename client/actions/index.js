@@ -3,11 +3,11 @@ export const ADD_TASK = 'ADD_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
 
-import { 
-    getTasks as apiGetTasks, 
-    addTask as apiAddTask, 
-    deleteTask as apiDeleteTask, 
-    updateTask as apiUpdateTask 
+import {
+    getTasks as apiGetTasks,
+    addTask as apiAddTask,
+    deleteTask as apiDeleteTask,
+    updateTask as apiUpdateTask
 } from '../apis/api'
 
 export function saveTasks(tasks) {
