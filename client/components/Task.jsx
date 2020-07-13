@@ -2,18 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
-import { removeTask, getTaskById } from '../actions'
+import { removeTask } from '../actions'
 import UpdateTask from './UpdateTask'
 
 class Task extends React.Component {
 
     state = {
-        showTasks: true,
+        readTasks: true,
     }
 
-    hideTasks = (evt) => {
+    editMode = (evt) => {
         this.setState({
-            showTasks: false
+            readTasks: false
         })
     }
 
@@ -26,20 +26,20 @@ class Task extends React.Component {
         // console.log(this.state)
         return (
             <>
-                {this.state.showTasks
+                {this.state.readTasks
                     ?
                     <tbody>
                         <tr>
                             <td>{this.props.task}</td>
                             <td>{this.props.priority}</td>
                             <td><input type="checkbox"></input></td>
-                            <td><FontAwesomeIcon icon={faEdit} size="2x" onClick={this.hideTasks} /></td>
+                            <td><FontAwesomeIcon icon={faEdit} size="2x" onClick={this.editMode} /></td>
                             <td><FontAwesomeIcon icon={faTrashAlt} size="2x" onClick={this.handleDelete} /></td>
                         </tr>
                     </tbody>
                     :
                     <>
-                        <UpdateTask />
+                        <UpdateTask key={this.props.id} id={this.props.id} task={this.props.task} priority={this.props.priority} completed={this.props.completed}/>
                     </>
                 }
             </>
@@ -47,11 +47,5 @@ class Task extends React.Component {
     }
 }
 
-function mapStateToProps(globalState) {
-    // console.log(globalState)
-    return {
-        tasks: globalState.tasks
-    }
-}
 
-export default connect(mapStateToProps)(Task)
+export default connect()(Task)

@@ -2,36 +2,22 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons'
-import { getTask, editTask } from '../actions'
+import { editTask } from '../actions'
 
 class UpdateTask extends React.Component {
 
     state = {
         task: {
-            id: '',
-            task: '',
-            priority: '',
-            completed: ''
+            id: this.props.id,
+            task: this.props.task,
+            priority: this.props.priority,
+            completed: this.props.completed
         }
     }
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        // .then(task => {
-        //     this.setState ( {
-        //         task: {
-        //             id: task.id,
-        //             task: task.task,
-        //             priority: task.priority,
-        //             complete: task.completd
-        //         }
-        //     })
-        // })
         editTask(this.state.task.id, this.state.task)
-            .then(task => {
-                console.log(task)
-                // Need to get all tasks again and redirect to homepage showing new task added
-            })
     }
 
     handleChange = (evt) => {
@@ -41,7 +27,7 @@ class UpdateTask extends React.Component {
                 [evt.target.name]: evt.target.value
             }
         })
-        console.log(this.state.task)
+        // console.log(this.state.task)
     }
 
     render() {
@@ -50,7 +36,7 @@ class UpdateTask extends React.Component {
             <tbody>
                 <tr>
                     <td>
-                        <input type="text" name="task" onChange={this.handleChange} value={this.state.task.task} />
+                        <textarea name="task" row="50" onChange={this.handleChange} defaultValue={this.props.task} />
                     </td>
                     <td>
                         <select name="priority" onChange={this.handleChange} value={this.state.value}>
@@ -78,11 +64,10 @@ class UpdateTask extends React.Component {
     }
 }
 
-function mapStateToProps(globalState) {
-    // console.log(globalState)
-    return {
-        task: globalState.task
-    }
-}
+// function mapStateToProps(globalState) {
+//     return {
+//         task: globalState.tasks
+//     }
+// }
 
-export default connect(mapStateToProps)(UpdateTask)
+export default connect()(UpdateTask)
