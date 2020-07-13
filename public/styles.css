@@ -13,9 +13,12 @@ body {
 
 h1 {
   margin-top: 0;
+  margin-bottom: -10px;
   font-size: 2.6rem;
   letter-spacing: 0.05em;
   border-bottom: 1px solid rgba(255,255,255,.3);
+  background-color: #3385f0;
+  padding: 10px;
 }
 
 .app {
@@ -38,7 +41,7 @@ h1 {
   padding: 1.1rem 3rem;
   justify-content: space-between;
   align-items: center;
-  background: rgba(255,255,255,0.1);
+  /* background: rgba(255,255,255,0.1); */
 }
 
 form {
@@ -52,6 +55,7 @@ form input {
   background: #F7F1F1;
   padding: 0 1.5em;
   font-size: initial;
+  color: slategray;
 }
 
 form input[type="submit"] {
@@ -60,7 +64,7 @@ form input[type="submit"] {
   background: #66a8ff;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,.3);
-  margin-left: 5px;
+  margin-left: 0px;
   cursor: pointer;
   transition: background .2s ease-out;
 }
@@ -86,10 +90,12 @@ form input[type="submit"] {
 .update {
   padding:0 1.3rem;
   color: #F7F1F1;
-  background: #66a8ff;
+  /* background: #66a8ff; */
+  background: #549eff;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,.3);
   margin-left: 5px;
+  margin: 5px;
   cursor: pointer;
   transition: background .2s ease-out;
   height: 3rem;
@@ -104,5 +110,15 @@ form input[type="submit"] {
   align-items: center;
   font-weight: bolder;
   color: black;
+  background: rgb(255, 115, 115);
   /* background-color: yellowgreen; */
+}
+
+.todo-listP {
+  /* display: flex; */
+  margin: 0 -3rem 4px;
+  padding: 1.1rem 3rem;
+  justify-content: space-between;
+  align-items: center;
+  background:  #3385f0;
 }

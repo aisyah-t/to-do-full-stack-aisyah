@@ -16,7 +16,7 @@ class Tasks extends React.Component {
       return (
         <>
           {/* <li className='todo-list'> */}
-          <li className={`todo-list${task.priority ? ' priority' : ''}`}>
+          <li className={`todo-list li${task.priority ? ' todo-listP' : ''}`}>
             <h2>Task: {task.task}</h2>
             <p><b>Task details:</b> {task.taskDetails}</p>
             <p><b>Priority:</b> {(task.priority == 1) ? 'true' : 'false'}</p>
