@@ -27,14 +27,6 @@ export function deleteTask(taskId) {
         })
 }
 
-export function getTask(taskId) {
-    return request
-        .get(taskUrl + taskId)
-        .then(response => {
-            return response.body
-        })
-}
-
 export function updateTask(taskId, task) {
     return request
         .patch(taskUrl + taskId)

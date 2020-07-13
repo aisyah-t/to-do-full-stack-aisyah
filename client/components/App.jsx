@@ -10,7 +10,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.props.tasks)
     return (
       <ToDos tasks={this.props.tasks} />
     )

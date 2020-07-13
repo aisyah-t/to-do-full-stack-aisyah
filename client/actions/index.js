@@ -7,7 +7,6 @@ import {
     getTasks as apiGetTasks, 
     addTask as apiAddTask, 
     deleteTask as apiDeleteTask, 
-    getTask as apiGetTask, 
     updateTask as apiUpdateTask 
 } from '../apis/api'
 
@@ -62,25 +61,14 @@ export function saveTask(task) {
 }
 
 export function removeTask(taskId) {
-    // console.log(taskId)
     return dispatch => {
         apiDeleteTask(taskId)
             .then(dispatch(deleteTask(taskId)))
-        // .then(() => dispatch(getTasks()))
-    }
-}
-
-export function getTask(taskId) {
-    return dispatch => {
-        apiGetTask(taskId)
-            .then(dispatch(getTaskById(taskId)))
     }
 }
 
 export function editTask(taskId, updatedTask) {
     return dispatch => {
-        // console.log('Task ID is: ', taskId)
-        // console.log('Task is: ', task)
         apiUpdateTask(taskId, updatedTask)
             .then(dispatch(updateTask(taskId, updatedTask)))
     }

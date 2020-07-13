@@ -24,13 +24,6 @@ function deleteTask(taskId, db = connection) {
         .del()
 }
 
-function getTask(taskId, db = connection) {
-    return db('tasks')
-        .where('id', taskId)
-        .select()
-        .first()
-}
-
 function updateTask(taskId, task, db = connection) {
     return db('tasks')
         .where('id', taskId)
@@ -41,6 +34,5 @@ module.exports = {
     getTasks,
     addTask,
     deleteTask,
-    getTask,
     updateTask
 } 

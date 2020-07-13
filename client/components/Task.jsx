@@ -30,7 +30,6 @@ class Task extends React.Component {
     }
 
     render() {
-        // console.log(this.state)
         return (
             <>
                 {this.state.readTasks
@@ -39,7 +38,7 @@ class Task extends React.Component {
                         <tr>
                             <td>{this.props.task}</td>
                             <td>{this.props.priority}</td>
-                            <td><input type="checkbox"></input></td>
+                            <td><input type="checkbox" name="completed" ></input></td>
                             <td><FontAwesomeIcon icon={faEdit} size="2x" onClick={this.editMode} /></td>
                             <td><FontAwesomeIcon icon={faTrashAlt} size="2x" onClick={this.handleDelete} /></td>
                         </tr>

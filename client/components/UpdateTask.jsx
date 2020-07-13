@@ -29,11 +29,9 @@ class UpdateTask extends React.Component {
                 [evt.target.name]: evt.target.value
             }
         })
-        console.log(this.state.task)
     }
 
     render() {
-        // console.log(this.props)
         return (
             <tbody>
                 <tr>

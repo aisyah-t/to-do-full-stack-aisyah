@@ -26,11 +26,9 @@ class AddTask extends React.Component {
                 [evt.target.name]: evt.target.value
             }
         })
-        console.log(this.state.task)
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className="eight columns">
                 <h3>Create a new task</h3>

@@ -38,13 +38,6 @@ router.delete('/:id', (req, res) => {
         })
 })
 
-router.get('/:id', (req, res) => {
-    db.getTask(req.params.id)
-        .then(task => {
-            res.json(task)
-        })
-})
-
 router.patch('/:id', (req, res) => {
     const taskId = req.params.id
     const task = req.body
