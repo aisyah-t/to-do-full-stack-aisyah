@@ -4,7 +4,7 @@ const db = require('../db/animals')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  db.getAnimalSummaries()
+  db.getAnimalsAndTheirNouns()
   .then(animals => {
     res.json(animals)
   })
