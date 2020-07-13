@@ -5,7 +5,8 @@ const db = require('knex')(config)
 
 function getTasks() {
     return db('ToDo')
-        .then(posts => posts.map(parseParagraphs))     
+        .then(posts => posts.map(parseParagraphs))   
+        .catch(errr => console.log("an error happened in getTasks in server/db/db.js", errr.message))  
 }
 
 function getTask(id) {
@@ -16,6 +17,8 @@ function getTask(id) {
             // task.paragraphs = JSON.parse(task.paragraphs)
             return task
         })
+        .catch(err => console.log("an error happened in getTask in server/db/db.js", err))  
+
 }
 
 function createTask(task) {
@@ -26,14 +29,17 @@ function createTask(task) {
     return db('ToDo')
         .insert(task)
         .then(([id]) => id)
+        .catch(err => console.log("an error happened in createTask in server/db/db.js", err))  
+
 }
 
-function updateTask(id, task) {
+function updateTask(task) {
     // task.paragraphs = JSON.stringify(task.paragraphs)
 
     return db('ToDo')
         .update(task)
-        .where('id', id)
+        .where('id', task.id)
+        .catch(err => console.log("an error happened in updateTask in server/db/db.js", err))  
 
 }
 
@@ -41,6 +47,8 @@ function deleteTask(id) {
     return db('ToDo')
         .delete()
         .where('id', id)
+        .catch(err => console.log("an error happened in deleteTask in server/db/db.js", err))  
+
 
 }
 

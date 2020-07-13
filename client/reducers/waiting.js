@@ -1,8 +1,8 @@
-import {SET_LOADING} from '../actions'
+import {SET_LOADING} from '../actions/actions'
 
 const initialState = false
 
-const reducer = (state = initialState, action) => {
+const waitReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_LOADING:
       return action.loading
@@ -11,4 +11,4 @@ const reducer = (state = initialState, action) => {
   }
 }
 
-export default reducer
+export default waitReducer

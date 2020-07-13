@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
-import reducer from './Tasks'
+import TaskReducer from './Tasks'
+import waitReducer from './waiting'
 
 // import stuff from './stuff'
 
 export default combineReducers({
-  reducer
+  waitReducer,
+  TaskReducer
 })

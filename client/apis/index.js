@@ -19,9 +19,9 @@ export function createTask(task) {
 // update tasks
 export function updateTask(task) {
     return request.put('/tasks/' + task.id)
-    .send(post)
+    .send(task)
     .then(res => {return res.body})
-    .catch(console.log(err))
+    .catch(err => console.log(err))
 }
 
 // delete tasks
@@ -31,3 +31,4 @@ export function deleteTask() {
         return err.message
     })
 }
+

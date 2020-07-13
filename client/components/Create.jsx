@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 
 class Create extends React.Component {
     render() {
-        // const Tasks = props.tasks
-
         return (
             <div>
                 <p>this is the create component</p>
@@ -23,10 +21,13 @@ class Create extends React.Component {
     }
 }
 
-function mapStateToProps(globalState) {
-    return {
-        task: globalState.task,
-    }
-}
+export default connect()(Create)
 
-export default connect(mapStateToProps)(Create)
+
+// function mapStateToProps(globalState) {
+//     return {
+//         task: globalState.task,
+//     }
+// }
+
+// export default connect(mapStateToProps)(Create)

@@ -11,12 +11,12 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-   const id = req.params.id
+    const id = req.params.id
 
     db.getTask(id)
-    .then(task => {
-        res.json(task)
-    } )
+        .then(task => {
+            res.json(task)
+        })
 })
 
 router.post('/', (req, res) => {
@@ -34,16 +34,17 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    // console.log(req.body)
+    console.log(req.params.id)
 
     let id = req.params.id
     let task = {
+        id: id,
         task: req.body.task,
         priority: req.body.priority,
         complete: req.body.complete
     }
 
-    db.updateTask(id, task)
+    db.updateTask(task)
         .then(() => db.getTask(id))
         .then(task => {
             res.json(task)
@@ -53,9 +54,9 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     id = req.params.id
     db.deleteTask(id)
-    .then(() => {
-        res.sendStatus(200)
-    })
+        .then(() => {
+            res.sendStatus(200)
+        })
 })
 
 module.exports = router

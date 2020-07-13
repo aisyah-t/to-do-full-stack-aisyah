@@ -1,14 +1,23 @@
 import request from 'superagent'
 
+import {updateTask as apiUpdateTask, getTasks } from '../apis'
+
 export const UPDATE_TASK = 'UPDATE_TASK'
 export const RECEIVE_TASK = 'RECEIVE_TASK'
-export const SET_TASK = 'SET_TASK'
+export const SET_TASKS = 'SET_TASK'
 export const SET_LOADING = 'SET_LOADING'
 
 export function updateTask(task) {
     return {
         type: UPDATE_TASK,
         task: task
+    }
+}
+
+export function markComplete(id) {
+    return {
+        type: "MARK_COMPLETE",
+        id: id
     }
 }
 
@@ -29,9 +38,10 @@ export const receiveTasks = (tasks) => {
 
 // set task
 export function setTasks(tasks) {
+    // console.log("action is triggered", tasks)
     return {
-        type: SET_TASK,
-        tasks: tasks  
+        type: "SET_TASK",
+        tasks: tasks
     }
 }
 
@@ -39,17 +49,31 @@ export function setTasks(tasks) {
 export function fetchTasks() {
     return (dispatch) => {
         dispatch(setLoading(true))
-        return request
-            .get(`/tasks`)
-            .then(res => {
+        return getTasks()
+            .then(tasks => {
                 // console.log()
-                dispatch(receiveTasks(res.body))
+                dispatch(setTasks(tasks))
                 dispatch(setLoading(false))
 
             })
             .catch(err => {
                 dispatch(setLoading(false))
-                dispatch(showError(err.message))
+                console.log("fetch", err)
+                // dispatch(showError(err.message))
+            })
+    }
+}
+
+export function updateFetchTask(task) {
+    return (dispatch) => {
+        return apiUpdateTask(task)
+            .then(res => {
+                // console.log()
+                dispatch(fetchTasks())
+            })
+            .catch(err => {
+                console.log("update fetch", err)
+                // dispatch(showError(err.message))
             })
     }
 }

@@ -1,26 +1,36 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {updateFetchTask} from '../actions/actions'
 
 class Update extends React.Component {
     state = {
+        id: "",
         task: "",
         priority: "High",
         complete: "Yes",
     }
+
+    componentDidUpdate(prevProps){
+       if (this.props.match.params.id != prevProps.match.params.id) {this.setState({
+            id: this.props.match.params.id
+        })}
+    }
+
     handleTaskChange = (task) => {
         //setState task
-        console.log("task change")
-        console.log(task)
+        // console.log("task change")
+        // console.log(task)
         this.setState({
+
             task: task
         })
     }
 
     handlePriorityChange = (priority) => {
         //setState priority
-        console.log("priority change")
-        console.log(priority)
-        console.log(this)
+        // console.log("priority change")
+        // console.log(priority)
+        // console.log(this)
         this.setState({
             priority: priority
         })
@@ -28,30 +38,44 @@ class Update extends React.Component {
 
     handleCompleteChange = (complete) => {
         //setState complete
-        console.log("complete change")
-        console.log(complete)
+        // console.log("complete change")
+        // console.log(complete)
         this.setState({
             complete: complete
         })
     }
 
-    handleSubmit = () => {
+    handleSubmit = (e) => {
         //dispatch
-        let task = {
-            id: this.props.match.params.id
-        }
-        console.log(task)
+        // console.log("submitted")
+        // return (dispatch)
+        e.preventDefault()
+        
+        this.props.dispatch(updateFetchTask(this.state))
     }
 
+    // return (dispatch) => {
+    //    
+    //     return update
+    //       .then(
+
+    //       })
+    //       .catch(err => {
+    //         dispatch(showError(err.message))
+    //       })
+    //   }
+    // }
+
     render() {
-        // const Tasks = props.tasks
+        const id = this.props.match.params.id
+        const task = this.props.task[id-1] ? this.props.task[id-1].task : ""
 
-
+        // console.log("this is the state", this.state )
         return (
             <div>
-                <form >
+                <form onSubmit={this.handleSubmit}>
                     <p>this is the update component</p>
-                    <input type="text" placeholder="Task" name="task" onChange={(e) => this.handleTaskChange(e.target.value)}></input>
+                    <input type="text" placeholder={task} name="task" onChange={(e) => this.handleTaskChange(e.target.value)}></input>
 
                     <div>
                         <label>Priority </label>
@@ -78,7 +102,7 @@ class Update extends React.Component {
 
 function mapStateToProps(globalState) {
     return {
-        task: globalState.task,
+        task: globalState.TaskReducer,
     }
 }
 

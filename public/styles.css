@@ -18,6 +18,10 @@ h1 {
   border-bottom: 1px solid rgba(255,255,255,.3); 
 }
 
+a {
+  margin: 0;
+}
+
 .app {
   margin: 4rem auto;
   padding: 2rem 3rem;
@@ -73,4 +77,70 @@ form input[type="submit"]:hover {
 form input, 
 form input[type="submit"] {
   height: 3rem;
+}
+
+.listRow {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-radius: 3px;
+  margin: 5px;
+  border-color: #fd9d9d;
+}
+.listRow:hover {
+  background-color: #fd9d9d;
+
+}
+
+.listRowTask {
+  padding: 5px;
+  margin: 2px;
+  background-color: #E65C5C;
+  border-radius: 3px;
+  width: 70%;
+  color: #f7f1f1;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+}
+.listRowPriority {
+  background-color: #E65C5C;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 3px;
+  width: 15%;
+  text-align: center;
+}
+.listRowComplete {
+  padding: 5px;
+  background-color: #E65C5C;
+  margin: 2px;
+  border-radius: 3px;
+  width: 15%;
+  text-align: center;
+}
+.AddTaskButton {
+  font-size: 20px;
+  margin: 0;
+  padding-bottom: 5px;
+  background-color: #ff6666;
+}
+
+.listRowAdd {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-radius: 3px;
+  margin: 5px;
+  border-color: #fd9d9d;
+  width: 15%;
+  color: #f7f1f1;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  justify-content: center;
+}
+.listRowAdd:hover {
+  background-color: #fd9d9d;
+
 }
