@@ -17,7 +17,7 @@ class UpdateTask extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        editTask(this.state.task.id, this.state.task)
+        this.props.dispatch(editTask(this.state.task.id, this.state.task))
     }
 
     handleChange = (evt) => {

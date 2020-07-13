@@ -34,11 +34,11 @@ export function getTaskById(taskId) {
     }
 }
 
-export function updateTask(taskId, task) {
+export function updateTask(taskId, updatedTask) {
     return {
         type: UPDATE_TASK,
         taskId: taskId,
-        task: task
+        updatedTask: updatedTask
     }
 }
 
@@ -79,9 +79,11 @@ export function getTask(taskId) {
     }
 }
 
-export function editTask(taskId, task) {
+export function editTask(taskId, updatedTask) {
     return dispatch => {
-        apiUpdateTask(taskId, task)
-            .then(dispatch(updateTask(taskId, task)))
+        // console.log('Task ID is: ', taskId)
+        // console.log('Task is: ', task)
+        apiGetTask(taskId)
+            .then(dispatch(updateTask(taskId, updatedTask)))
     }
 }

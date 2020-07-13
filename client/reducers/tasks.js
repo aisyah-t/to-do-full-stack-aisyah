@@ -12,6 +12,8 @@ export const tasks = (state = initialState, action) => {
             return state.filter(task => task.id !== action.taskId)
         case GET_TASK_BY_ID:
             return state.find(task => task.id == action.taskId)
+        case UPDATE_TASK:
+            return action.updatedTask
         default:
             return state
     }
