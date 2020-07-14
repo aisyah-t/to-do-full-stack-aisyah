@@ -33,7 +33,9 @@ class AddTask extends React.Component {
     render() {
         return (
             <tr>
-                <td><textarea name="task" onChange={this.handleChange} /></td>
+                <td>
+                    <textarea name="task" onChange={this.handleChange} />
+                </td>
                 <td>
                     <select name="priority" onChange={this.handleChange} value={this.state.value}>
                         <option value="Low">Low</option>

@@ -33,7 +33,6 @@ class UpdateTask extends React.Component {
 
     render() {
         return (
-            <tbody>
                 <tr>
                     <td>
                         <textarea name="task" onChange={this.handleChange} defaultValue={this.props.task} />
@@ -58,7 +57,6 @@ class UpdateTask extends React.Component {
                     <td>
                     </td>
                 </tr>
-            </tbody>
         )
     }
 }
