@@ -1,7 +1,10 @@
-import App from "../../../client/components/App"
+import React from 'react'
+import { App } from "../../../client/components/App"
+import { shallow, mount } from 'enzyme'
 
 test ("App renders correctly", () => {
-    console.log(App)
+    const wrapper = shallow(<App dispatch={() => {}} tasks={{}} />)
+    console.log(wrapper.debug())
 })
 
 

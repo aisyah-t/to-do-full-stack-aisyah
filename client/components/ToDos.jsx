@@ -9,38 +9,48 @@ import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 class ToDos extends React.Component {
 
     state = {
-        showTasks: false
+        showAddForm: false
     }
 
     hideAddForm = () => {
         this.setState({
-            showTasks: false
+            showAddForm: false
         })
     }
 
     showAddForm = () => {
         this.setState({
-            showTasks: true
+            showAddForm: true
         })
     }
 
     render() {
         return (
             <main className="twelve columns">
-                <h1 className="ten columns">All The Things I Get To Do</h1>
-                <FontAwesomeIcon icon={faPlusSquare} size="6x" onClick={this.showAddForm} />
+                <h1 className="eleven columns">All The Things I Get To Do</h1>
                 <table className="ten columns">
                     <thead>
                         <tr>
-                            <td><h5>Task</h5></td>
-                            <td><h5>Priority</h5></td>
-                            <td><h5>Complete</h5></td>
-                            <td><h5>Edit</h5></td>
-                            <td><h5>Delete</h5></td>
+                            <td>
+                                <FontAwesomeIcon icon={faPlusSquare} size="3x" onClick={this.showAddForm} className="add-task" />
+                                <h5>Task</h5>
+                            </td>
+                            <td>
+                                <h5>Priority</h5>
+                            </td>
+                            <td>
+                                <h5>Complete</h5>
+                            </td>
+                            <td>
+                                <h5>Edit</h5>
+                            </td>
+                            <td>
+                                <h5>Delete</h5>
+                            </td>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.showTasks && <AddTask hideAddForm={this.hideAddForm} />}
+                        {this.state.showAddForm && <AddTask hideAddForm={this.hideAddForm} />}
 
                         {this.props.tasks.map((todo) => {
                             return (

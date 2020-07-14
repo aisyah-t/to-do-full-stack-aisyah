@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import ToDos from './ToDos'
 import { getTasks } from '../actions'
 
-class App extends React.Component {
+export class App extends React.Component {
 
   componentDidMount = () => {
     this.props.dispatch(getTasks())
