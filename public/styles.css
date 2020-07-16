@@ -24,7 +24,7 @@ h1 {
   margin: 4rem auto;
   padding: 2rem 3rem;
   max-width: 420px;
-  background-color: #ff6666;
+  background-color: #ff666686;
   color: #f7f1f1;
   border-radius: 5px;
 }
@@ -61,7 +61,7 @@ form input {
 form input[type="submit"] {
   padding:0 1.3rem;
   color: #f7f1f1;
-  background: #ff6666;
+  background: #ff29297e;
   text-transform: uppercase;
   border: 1px solid rgba(255,255,255,.3);
   margin-left: 5px;
