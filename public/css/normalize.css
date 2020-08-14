@@ -425,8 +425,3 @@ td,
 th {
   padding: 0;
 }
-
-.add-task {
-  display: inline-flex;
-  float: left
-}

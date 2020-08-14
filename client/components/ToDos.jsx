@@ -32,7 +32,7 @@ class ToDos extends React.Component {
                     <thead>
                         <tr>
                             <td>
-                                <FontAwesomeIcon icon={faPlusSquare} size="3x" onClick={this.showAddForm} className="add-task" />
+                                <FontAwesomeIcon icon={faPlusSquare} size="3x" onClick={this.showAddForm} className="u-pull-left" />
                                 <h5>Task</h5>
                             </td>
                             <td>
